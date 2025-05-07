@@ -1,0 +1,240 @@
+/* General Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+  }
+:root {
+    --blue-light: #D6F6FF;
+    --blue-main: #0091FF;
+    --blue-dark: #086EC5;
+    --blue-darker: #0D5E9B;
+    --blue-darkest: #0E385D;
+    --gray-light: #f3f3f4;
+    --gray-dark: #333;
+    --max-width: 1200px; /* Ancho máximo para centrar contenido */
+}
+
+/* Contenedor principal */
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto; /* Centra el contenido horizontalmente */
+    padding: 0 15px; /* Espaciado lateral para pantallas pequeñas */
+}
+
+/* Header */
+header {
+    background: var(--blue-darkest);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Estilo para las acciones del usuario en el header */
+header .user-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espaciado entre los enlaces */
+}
+
+header .user-actions a {
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+header .user-actions a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+header .logo img {
+    height: 45px; /* Tamaño del logo */
+    max-width: 200px; /* Evitar que se exceda */
+}
+
+header .search-bar {
+    display: flex;
+    align-items: center;
+    background-color: var(--gray-light);
+    border-radius: 8px;
+    padding: 5px 10px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header .search-bar input {
+    border: none;
+    outline: none;
+    background: none;
+    width: 100%;
+    padding: 5px;
+    font-size: 1rem;
+    color: var(--gray-dark);
+}
+
+header .search-bar input::placeholder {
+    color: #aaa;
+}
+
+header .search-bar button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--blue-dark);
+    font-size: 1.2rem;
+}
+
+/* From Uiverse.io by Yaya12085 */ 
+.form {
+    background-color: #fff;
+    display: block;
+    padding: 1rem;
+    max-width: 350px;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  .form-title {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 600;
+    text-align: center;
+    color: #000;
+  }
+  
+  .input-container {
+    position: relative;
+  }
+  
+  .input-container input, .form button {
+    outline: none;
+    border: 1px solid #e5e7eb;
+    margin: 8px 0;
+  }
+  
+  .input-container input {
+    background-color: #fff;
+    padding: 1rem;
+    padding-right: 3rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    width: 300px;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  }
+  
+  .input-container span {
+    display: grid;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    place-content: center;
+  }
+  
+  .input-container span svg {
+    color: #9CA3AF;
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  .submit {
+    display: block;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    background-color: #4F46E5;
+    color: #ffffff;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    width: 100%;
+    border-radius: 0.5rem;
+    text-transform: uppercase;
+  }
+  
+  .signup-link {
+    color: #6B7280;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    text-align: center;
+  }
+  
+  .signup-link a {
+    text-decoration: underline;
+  }
+  
+/*footer*/
+.footer-ofertia {
+    background-color: #0e385d;
+    color: #fff;
+    padding: 40px 20px 20px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+  
+  .footer-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 30px;
+  }
+  
+  .footer-column {
+    flex: 1 1 220px;
+  }
+  
+  .footer-column h3 {
+    font-size: 1rem;
+    margin-bottom: 12px;
+    color: #ffffff;
+  }
+  
+  .footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-column ul li {
+    margin-bottom: 8px;
+  }
+  
+  .footer-column ul li a {
+    color: #d6f6ff;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  
+  .footer-column ul li a:hover {
+    text-decoration: underline;
+    color: #83eaff;
+  }
+  
+  .footer-column p {
+    font-size: 0.85rem;
+    color: #cfdce6;
+  }
+  

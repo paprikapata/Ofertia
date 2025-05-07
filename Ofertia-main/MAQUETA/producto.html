@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audífonos Bluetooth - Detalle del Producto</title>
+    <link rel="stylesheet" href="/CSS/producto.css">
+</head>
+<body>
+    <!-- Barra de navegación y encabezado (asumimos que ya existe) -->
+    <header>
+
+        
+            <div class="container">
+          <!-- Botón hamburguesa independiente -->
+          <label class="burger menu-toggle" for="burger">
+            <input type="checkbox" id="burger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+            <!-- Menú lateral dentro del botón -->
+            <div class="menu-lateral" id="menuCategorias">
+              <div class="menu-header">
+                <span class="menu-titulo">Categorías</span>
+                <button class="btn-cerrar" onclick="toggleMenu()">✕</button>
+              </div>
+              <ul class="lista-categorias">
+                <li onclick="mostrarSubcategorias('Tecnología')">Tecnología <span>›</span></li>
+                <li onclick="mostrarSubcategorias('Electrodomésticos')">Electrodomésticos <span>›</span></li>
+                <li onclick="mostrarSubcategorias('Moda')">Moda <span>›</span></li>
+                <li onclick="mostrarSubcategorias('Juguetes')">Juguetes <span>›</span></li>
+                <li onclick="mostrarSubcategorias('Hogar')">Hogar y muebles <span>›</span></li>
+                <li onclick="mostrarSubcategorias('Libros')">Libros y papelería <span>›</span></li>
+              </ul>
+          
+              <!-- Subcategorías -->
+              <div class="menu-subcategorias" id="subcategoriasBox">
+                <button class="btn-volver" onclick="volverCategorias()">← Volver</button>
+                <h4 id="tituloSubcategoria">Subcategorías</h4>
+                <ul id="listaSubcategorias"></ul>
+              </div>
+            </div>
+          
+          
+          
+          <script>
+            const subcategorias = {
+              "Tecnología": ["Audífonos", "Celulares", "Computadores", "Accesorios"],
+              "Electrodomésticos": ["Lavadoras", "Neveras", "Cafeteras"],
+              "Moda": ["Hombre", "Mujer", "Zapatos"],
+              "Juguetes": ["Educativos", "Muñecos"],
+              "Hogar": ["Sofás", "Camas", "Decoración"],
+              "Libros": ["Escolares", "Novelas", "Papelería"]
+            };
+          
+            function toggleMenu() {
+              const menu = document.getElementById('menuCategorias');
+              const isOpen = menu.style.display === 'flex';
+              menu.style.display = isOpen ? 'none' : 'flex';
+              document.getElementById('subcategoriasBox').style.display = 'none';
+              document.getElementById('burger').checked = !isOpen;
+            }
+          
+            function mostrarSubcategorias(categoria) {
+              const box = document.getElementById('subcategoriasBox');
+              const list = document.getElementById('listaSubcategorias');
+              const titulo = document.getElementById('tituloSubcategoria');
+          
+              list.innerHTML = "";
+              titulo.textContent = categoria;
+          
+              if (subcategorias[categoria]) {
+                subcategorias[categoria].forEach(sub => {
+                  const item = document.createElement('li');
+                  item.textContent = sub;
+                  list.appendChild(item);
+                });
+              }
+          
+              box.style.display = 'block';
+            }
+          
+            function volverCategorias() {
+              document.getElementById('subcategoriasBox').style.display = 'none';
+            }
+          </script>
+          
+          
+          
+              
+          
+          
+          
+                      
+              <a href="index.html">
+              <div class="logo">
+                <img src="IMG/ico/ofertia (1).png" alt="Logo">
+              </a>
+          
+              </div>
+              <div class="search-bar">
+                <input type="text" placeholder="Buscar productos...">
+                <button><i class="fas fa-search"></i></button>
+              </div>
+              <div class="user-actions">
+                <a href="favoritos.html">Favoritos</a>
+                <a href="iniciar_sesion.html">Usuario</a>
+              </div>
+            </div>
+    </header>  
+    
+
+    <main class="producto-detalle-container">
+        <!-- Ruta de navegación (breadcrumb) -->
+        <nav class="breadcrumb">
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/tecnologia">Tecnología</a></li>
+                <li><a href="/tecnologia/audifonos">Audífonos</a></li>
+                <li class="active">Audífonos Bluetooth Premium</li>
+            </ul>
+        </nav>
+
+        <!-- Sección principal del producto -->
+        <section class="producto-principal">
+            <div class="galeria-producto">
+                <div class="imagen-principal">
+                    <img src="https://i.pinimg.com/736x/68/9c/9b/689c9b23e5254514197b9b209310e34d.jpg" alt="Audífonos Bluetooth Premium" id="imagen-principal">
+                </div>
+                <div class="miniaturas">
+                    <button class="miniatura active" data-img="https://i.pinimg.com/736x/68/9c/9b/689c9b23e5254514197b9b209310e34d.jpg">
+                        <img src="https://i.pinimg.com/736x/68/9c/9b/689c9b23e5254514197b9b209310e34d.jpg" alt="Vista frontal">
+                    </button>
+                    <button class="miniatura" data-img="https://ejemplo.com/audifonos-lateral.jpg">
+                        <img src="https://ejemplo.com/audifonos-lateral-small.jpg" alt="Vista lateral">
+                    </button>
+                    <button class="miniatura" data-img="https://ejemplo.com/audifonos-caja.jpg">
+                        <img src="https://ejemplo.com/audifonos-caja-small.jpg" alt="Empaque">
+                    </button>
+                    <button class="miniatura" data-img="https://ejemplo.com/audifonos-uso.jpg">
+                        <img src="https://ejemplo.com/audifonos-uso-small.jpg" alt="En uso">
+                    </button>
+                </div>
+
+                <!-- Bloque resumen de comparación -->
+                <div class="resumen-comparacion">
+                    <div class="resumen-precio">
+                        <div class="rango-precios">
+                            <span class="precio-desde">$89.900</span>
+                            <span class="separador-precios">-</span>
+                            <span class="precio-hasta">$149.900</span>
+                        </div>
+                        <p class="tiendas-disponibles">Disponible en 12 tiendas</p>
+                    </div>
+                    <div class="resumen-botones">
+                        <button class="btn-ver-ofertas">Ver todas las ofertas</button>
+                        <button class="btn-alerta-precio">
+                            <svg viewBox="0 0 24 24" width="16" height="16">
+                                <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/>
+                            </svg>
+                            Crear alerta de precio
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-producto">
+                <div class="producto-encabezado">
+                    <h1 class="producto-titulo">Audífonos Bluetooth Premium</h1>
+                    <button class="btn-favorito" aria-label="Agregar a favoritos">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M12 21l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4
+                            c1.54 0 3.04.99 3.57 2.36h.87C14.46 4.99 15.96 4 17.5 4
+                            20 4 22 6 22 8.5c0 3.78-3.4 6.86-8.55 11.18L12 21z"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="calificacion">
+                    <div class="estrellas">
+                        <span class="estrella llena">★</span>
+                        <span class="estrella llena">★</span>
+                        <span class="estrella llena">★</span>
+                        <span class="estrella llena">★</span>
+                        <span class="estrella media">★</span>
+                    </div>
+                    <a href="#resenas" class="resenas-link">136 reseñas</a>
+                </div>
+
+                <p class="producto-descripcion">
+                    Audífonos Bluetooth de alta calidad con cancelación activa de ruido, 
+                    autonomía de 30 horas, conectividad multipunto y sonido premium con 
+                    graves profundos y agudos cristalinos.
+                </p>
+
+                <!-- Historial de precios -->
+                <div class="historial-precios">
+                    <h3>Evolución del precio</h3>
+                    <div class="grafico-precios">
+                        <!-- Aquí iría un gráfico de evolución de precios -->
+                        <img src="/img/graficos/evolucion-precios.png" alt="Gráfico de evolución de precios">
+                    </div>
+                    <div class="indicadores-precio">
+                        <div class="indicador">
+                            <span class="etiqueta">Precio actual mínimo:</span>
+                            <span class="valor">$89.900</span>
+                        </div>
+                        <div class="indicador">
+                            <span class="etiqueta">Precio medio:</span>
+                            <span class="valor">$120.000</span>
+                        </div>
+                        <div class="indicador">
+                            <span class="etiqueta">Precio máximo histórico:</span>
+                            <span class="valor">$159.900</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Información adicional del producto -->
+                <div class="info-adicional">
+                    <div class="caracteristica">
+                        <div class="icono">
+                            <svg viewBox="0 0 24 24" width="20" height="20">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                            </svg>
+                        </div>
+                        <div class="texto">
+                            <h4>Cancelación de ruido</h4>
+                            <p>Activa (ANC)</p>
+                        </div>
+                    </div>
+                    <div class="caracteristica">
+                        <div class="icono">
+                            <svg viewBox="0 0 24 24" width="20" height="20">
+                                <path d="M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42C17.99 7.86 19 9.81 19 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.19 1.01-4.14 2.58-5.42L6.17 5.17C4.23 6.82 3 9.26 3 12c0 4.97 4.03 9 9 9s9-4.03 9-9c0-2.74-1.23-5.18-3.17-6.83z"/>
+                            </svg>
+                        </div>
+                        <div class="texto">
+                            <h4>Autonomía</h4>
+                            <p>Hasta 30 horas</p>
+                        </div>
+                    </div>
+                    <div class="caracteristica">
+                        <div class="icono">
+                            <svg viewBox="0 0 24 24" width="20" height="20">
+                                <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/>
+                            </svg>
+                        </div>
+                        <div class="texto">
+                            <h4>Micrófono</h4>
+                            <p>Incorporado con reducción de ruido</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alertas de precio -->
+                <div class="alerta-precio-box">
+                    <h3>Crear alerta de precio</h3>
+                    <p>Te notificaremos cuando el precio baje del valor que indiques:</p>
+                    <div class="alerta-form">
+                        <div class="precio-input">
+                            <span class="simbolo">$</span>
+                            <input type="number" value="100000" min="50000" max="200000" step="1000">
+                        </div>
+                        <button class="btn-crear-alerta">Crear alerta</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de comparación de precios -->
+        <section class="comparacion-precios">
+            <h2>Comparación de precios</h2>
+            
+            <div class="filtros-comparacion">
+                <div class="filtro">
+                    <label for="ordenar">Ordenar por:</label>
+                    <select id="ordenar">
+                        <option value="precio_asc">Precio: menor a mayor</option>
+                        <option value="precio_desc">Precio: mayor a menor</option>
+                        <option value="relevancia">Relevancia</option>
+                        <option value="valoraciones">Valoraciones</option>
+                    </select>
+                </div>
+                <div class="filtro">
+                    <label for="envio">Envío:</label>
+                    <select id="envio">
+                        <option value="todos">Todos</option>
+                        <option value="gratis">Envío gratis</option>
+                    </select>
+                </div>
+                <div class="filtro">
+                    <label for="vendedor">Tipo de vendedor:</label>
+                    <select id="vendedor">
+                        <option value="todos">Todos</option>
+                        <option value="oficial">Tienda oficial</option>
+                        <option value="marketplace">Marketplace</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="lista-ofertas">
+                <!-- Oferta 1 -->
+                <div class="oferta-item">
+                    <div class="tienda-info">
+                        <img src="/img/tiendas/amazon.png" alt="Amazon" class="logo-tienda">
+                        <div class="tienda-detalles">
+                            <h3 class="nombre-tienda">Amazon</h3>
+                            <div class="calificacion-tienda">
+                                <div class="estrellas">
+                                    <span class="estrella llena">★</span>
+                                    <span class="estrella llena">★</span>
+                                    <span class="estrella llena">★</span>
+                                    <span class="estrella llena">★</span>
+                                    <span class="estrella media">★</span>
+                                </div>
+                                <span class="num-opiniones">(2.453)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="oferta-detalles">
+                        <h3 class="oferta-nombre">Audífonos Bluetooth Premium - Negro</h3>
+                        <div class="oferta-envio">
+                            <svg viewBox="0 0 24 24" width="16" height="16">
+                                <path d="M19 7c0-1.1-.9-2-2-2h-3v2h3v2.65L13.52 14H10V9H6c-2.21 0-4 1.79-4 4v3h2c0 1.66 1.34 3 3 3s3-1.34 3-3h4.48L19 10.35V7zM7 17c-.55 0-1-.45-1-1h2c0 .55-.45 1-1 1z"/>
+                            </svg>
+                            <span>Envío gratis</span>
+                        </div>
+                        <div class="oferta-disponibilidad">
+                            <svg viewBox="0 0 24 24" width="16" height="16">
+                                <path d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z"/>
+                            </svg>
+                            <span>En stock</span>
+                        </div>
+                    </div>
+                    <div class="oferta-precio">
+                        <div class="precio">$89.900</div>
+                        <p class="info-precio">Incluye impuestos</p>
+                        <button class="btn-ir-oferta">Ver oferta</button>
+                    </div>
+                </div>
+
+                <!-- Oferta 2 -->
+                <div class="oferta-item">
+                    <div class="tienda-info">
+                        <img src="/img/tiendas/falabella.png" alt="Falabella" class="logo-tienda">
+                        <div class="tienda-detalles">
+                            <h3 class="nombre-tienda">Falabella</h3>
+                            <div class="calificacion-tienda">
+                                <div class="estrellas">
+                                    <span class="estrella llena">★</span>
+                                    <span class="estrella llena">★</span>
+                                    <span class="estrella llena">★</span>
+                                    <span class="estrella llena">★</span>
+                                    <span class="estrella">★</span>
+                                </div>
+                                <span class="num-opiniones">(1.827)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="oferta-detalles">
+                        <h3 class="oferta-nombre">Audífonos Bluetooth Premium - Azul</h3>
+                        <div class="oferta-envio">
+                            <svg viewBox="0 0 24 24" width="16" height="16">
+                                <path d="M19 7c0-1.1-.9-2-2-2h-3v2h3v2.65L13.52 14H10V9H6c-2.21 0-4 1.79-4 4v3h2c0 1.66 1.34 3 3 3s3-1.34 3-3h4.48L19 10.35V7zM7 17c-.55 0-1-.45-1-1h2c0 .55-.45 1-1 1z"/>
+                            </svg>
+                            <span>Envío gratis en compras > $50.000</span>
+                        </div>
+                        <div class="oferta-disponibilidad">
+                            <svg viewBox="0 0 24 24" width="16" height="16">
+                                <path d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z"/>
+                            </svg>
+                            <span>En stock - Entrega en 24-48h</span>
+                        </div>
+                    </div>
+                    <div class="oferta-precio">
+                        <div class="precio">$99.900</div>
+                        <p class="info-precio">Posibilidad de pago en 3 cuotas</p>
+                        <button class="btn-ir-oferta">Ver oferta</button>
+                    </div>
+                </div>
+
+                <!-- Oferta 3 -->
+                <div class="oferta-item">
+                    <div class="tienda-info">
+                        <img src="/img/tiendas/mercadolibre.png" alt="MercadoLibre" class="logo-tienda">
+                        <div class="tienda-detalles">
+                            <h3 class="nombre-tienda">MercadoLibre</h3>
+                            <div class="calificacion-tienda">
+                                <div class="estrellas">
+                                    <span class="estrella llena">★</span>
+                                    <span class="estrella llena">★</span>
+                                    <span class="estrella llena">★</span>
+                                    <span class="estrella llena">★</span>
+                                    <span class="estrella llena">★</span>
+                                </div>
+                                <span class="num-opiniones">(3.652)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="oferta-detalles">
+                        <h3 class="oferta-nombre">Audífonos Bluetooth Premium - Negro</h3>
+                        <div class="oferta-envio">
+                            <svg viewBox="0 0 24 24" width="16" height="16">
+                                <path d="M19 7c0-1.1-.9-2-2-2h-3v2h3v2.65L13.52 14H10V9H6c-2.21 0-4 1.79-4 4v3h2c0 1.66 1.34 3 3 3s3-1.34 3-3h4.48L19 10.35V7zM7 17c-.55 0-1-.45-1-1h2c0 .55-.45 1-1 1z"/>
+                            </svg>
+                            <span>Envío gratis - MercadoLibre FULL</span>
+                        </div>
+                        <div class="oferta-disponibilidad">
+                            <svg viewBox="0 0 24 24" width="16" height="16">
+                                <path d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z"/>
+                            </svg>
+                            <span>En stock - Entrega en 24h</span>
+                        </div>
+                    </div>
+                    <div class="oferta-precio">
+                        <div class="precio">$105.900</div>
+                        <p class="info-precio">Descuento 10% con MercadoPago</p>
+                        <button class="btn-ir-oferta">Ver oferta</button>
+                    </div>
+                </div>
+
+                <!-- Más ofertas... -->
+                <div class="ver-mas-contenedor">
+                    <button class="btn-cargar-mas-ofertas">Ver más ofertas (9)</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pestañas de información adicional -->
+        <section class="producto-tabs">
+            <div class="tabs-header">
+                <button class="tab-btn active" data-tab="especificaciones">Especificaciones</button>
+                <button class="tab-btn" data-tab="caracteristicas">Características</button>
+                <button class="tab-btn" data-tab="opiniones" id="tab-resenas">Opiniones</button>
+                <button class="tab-btn" data-tab="alternativas">Alternativas</button>
+                <button class="tab-btn" data-tab="preguntas">Preguntas frecuentes</button>
+            </div>
+
+            <div class="tabs-content">
+                <div class="tab-panel active" id="especificaciones">
+                    <table class="tabla-especificaciones">
+                        <tr>
+                            <th>Tipo</th>
+                            <td>Circumaurales (Over-Ear)</td>
+                        </tr>
+                        <tr>
+                            <th>Conectividad</th>
+                            <td>Bluetooth 5.2, Cable 3.5mm</td>
+                        </tr>
+                        <tr>
+                            <th>Batería</th>
+                            <td>30 horas con ANC activado</td>
+                        </tr>
+                        <tr>
+                            <th>Cancelación de ruido</th>
+                            <td>ANC adaptativo</td>
+                        </tr>
+                        <tr>
+                            <th>Respuesta de frecuencia</th>
+                            <td>20Hz - 20kHz</td>
+                        </tr>
+                        <tr>
+                            <th>Peso</th>
+                            <td>250g</td>
+                        </tr>
+                        <tr>
+                            <th>Contenido del paquete</th>
+                            <td>Audífonos, Cable USB-C, Cable 3.5mm, Estuche de transporte, Manual</td>
+                        </tr>
+                        <tr>
+                            <th>Garantía</th>
+                            <td>2 años</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="tab-panel" id="caracteristicas">
+                    <ul class="lista-caracteristicas">
+                        <li>
+                            <h3>Cancelación Activa de Ruido (ANC)</h3>
+                            <p>Tecnología avanzada que elimina hasta el 95% del ruido ambiental, ideal para viajes, oficina o estudios.</p>
+                        </li>
+                        <li>
+                            <h3>Modo Transparencia</h3>
+                            <p>Te permite escuchar el entorno sin necesidad de quitarte los audífonos.</p>
+                        </li>
+                        <li>
+                            <h3>Sonido Hi-Fi</h3>
+                            <p>Drivers de 40mm con tecnología de audio de alta resolución para un sonido envolvente y detallado.</p>
+                        </li>
+                        <li>
+                            <h3>Conectividad Multipunto</h3>
+                            <p>Conecta dos dispositivos simultáneamente y cambia entre ellos sin interrupciones.</p>
+                        </li>
+                        <li>
+                            <h3>Asistente de Voz</h3>
+                            <p>Compatible con Google Assistant, Alexa y Siri para control por voz.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="tab-panel" id="opiniones">
+                    <div class="resumen-resenas">
+                        <div class="calificacion-promedio">
+                            <span class="promedio">4.5</span>
+                            <div class="estrellas-promedio">
+                                <span class="estrella llena">★</span>
+                                <span class="estrella llena">★</span>
+                                <span class="estrella llena">★</span>
+                                <span class="estrella llena">★</span>
+                                <span class="estrella media">★</span>
+                            </div>
+                            <p>136 opiniones</p>
+                        </div>
+                        <div class="distribucion-calificaciones">
+                            <div class="calificacion-barra">
+                                <span class="nivel">5 ★</span>
+                                <div class="barra-bg"><div class="barra-valor" style="width: 70%"></div></div>
+                                <span class="porcentaje">70%</span>
+                            </div>
+                            <!-- Más barras de calificación -->
+                        </div>
+                    </div>
+
+                    <!-- Filtros de opiniones -->
+                    <div class="filtros-opiniones">
+                        <div class="filtro-opinion">
+                            <label for="ordenar-opiniones">Ordenar por:</label>
+                            <select id="ordenar-opiniones">
+                                <option value="recientes">Más recientes</option>
+                                <option value="positivas">Más positivas</option>
+                                <option value="negativas">Más críticas</option>
+                            </select>
+                        </div>
+                        <div class="filtro-opinion">
+                            <label for="filtrar-estrellas">Filtrar por:</label>
+                            <select id="filtrar-estrellas">
+                                <option value="todas">Todas las estrellas</option>
+                                <option value="5">5 estrellas</option>
+                                <option value="4">4 estrellas</option>
+                                <option value="3">3 estrellas</option>
+                                <option value="2">2 estrellas</option>
+                                <option value="1">1 estrella</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="lista-resenas">
+                        <!-- Reseña individual -->
+                        <div class="resena">
+                            <div class="resena-encabezado">
+                                <div class="resena-usuario">
+                                    <img src="/img/avatars/user1.jpg" alt="Avatar de Carlos M." class="avatar">
+                                    <div>
+                                        <h4>Carlos M.</h4>
+                                        <p class="fecha-resena">15 de mayo, 2023</p>
+                                        <div class="tienda-compra">
+                                            <span>Comprado en</span>
+                                            <img src="/img/tiendas/amazon-small.png" alt="Amazon">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="estrellas-resena">
+                                    <span class="estrella llena">★</span>
+                                    <span class="estrella llena">★</span>
+                                    <span class="estrella llena">★</span>
+                                    <span class="estrella llena">★</span>
+                                    <span class="estrella llena">★</span>
+                                </div>
+                            </div>
+                            <h3 class="titulo-resena">Excelente calidad de sonido y cancelación de ruido</h3>
+                            <p class="texto-resena">
+                                Después de probar varios modelos, estos son los mejores audífonos que he tenido. 
+                                La cancelación de ruido es impresionante, especialmente en aviones. La batería 
+                                dura lo que prometen e incluso más. Muy cómodos para uso prolongado.
+                            </p>
+                            <div class="fotos-resena">
+                                <img src="/img/resenas/foto1.jpg" alt="Foto de usuario">
+                                <img src="/img/resenas/foto2.jpg" alt="Foto de usuario">
+                            </div>
+                            <div class="utilidad-resena">
+                                <p>¿Te resultó útil esta opinión?</p>
+                                <button class="btn-util">Sí (24)</button>
+                                <button class="btn-util">No (2)</button>
+                            </div>
+                        </div>
+
+                        <!-- Más reseñas aquí -->
+                        <div class="resena">
+                            <!-- Estructura similar a la anterior -->
+                        </div>
+
+                        <button class="btn-cargar-mas">Ver más opiniones</button>
+                    </div>
+                </div>
+
+                <div class="tab-panel" id="alternativas">
+                    <h3>Productos alternativos</h3>
+                    <p>Estos productos ofrecen características similares y podrían interesarte:</p>
+                    
+                    <div class="alternativas-grid">
+                        <!-- Alternativa 1 -->
+                        <div class="producto-alternativa">
+                            <div class="alternativa-imagen">
+                                <img src="/img/productos/alternativa1.jpg" alt="Sony WH-1000XM4">
+                            </div>
+                            <div class="alternativa-info">
+                                <h4>Sony WH-1000XM4</h4>
+                                <div class="alternativa-calificacion">
+                                    <div class="estrellas">
+                                        <span class="estrella llena">★</span>
+                                        <span class="estrella llena">★</span>
+                                        <span class="estrella llena">★</span>
+                                        <span class="estrella llena">★</span>
+                                        <span class="estrella llena">★</span>
+                                    </div>
+                                    <span class="num-opiniones">(325)</span>
+                                </div>
+                            <!-- Alternativa -->
+                                    <div class="alternativa-precio">
+                                        <span class="desde">Desde</span>
+                                        <span class="precio">$149.900</span>
+                                    </div>
+                                    <div class="alternativa-tiendas">
+                                        <span>Disponible en 8 tiendas</span>
+                                    </div>
+                                    <a href="/comparar/audifonos/sony-wh-1000xm4" class="btn-ver-producto">Ver producto</a>
+                                </div>
+                            </div>
+                        
+                            <!-- Alternativa 2 -->
+                            <div class="producto-alternativa">
+                                <div class="alternativa-imagen">
+                                    <img src="/img/productos/alternativa2.jpg" alt="Bose QuietComfort 45">
+                                </div>
+                                <div class="alternativa-info">
+                                    <h4>Bose QuietComfort 45</h4>
+                                    <div class="alternativa-calificacion">
+                                        <div class="estrellas">
+                                            <span class="estrella llena">★</span>
+                                            <span class="estrella llena">★</span>
+                                            <span class="estrella llena">★</span>
+                                            <span class="estrella llena">★</span>
+                                            <span class="estrella media">★</span>
+                                        </div>
+                                        <span class="num-opiniones">(178)</span>
+                                    </div>
+                                    <div class="alternativa-precio">
+                                        <span class="desde">Desde</span>
+                                        <span class="precio">$129.900</span>
+                                    </div>
+                                    <div class="alternativa-tiendas">
+                                        <span>Disponible en 6 tiendas</span>
+                                    </div>
+                                    <a href="/comparar/audifonos/bose-quietcomfort-45" class="btn-ver-producto">Ver producto</a>
+                                </div>
+                            </div>
+                        
+                            <!-- Alternativa 3 -->
+                            <div class="producto-alternativa">
+                                <div class="alternativa-imagen">
+                                    <img src="/img/productos/alternativa3.jpg" alt="Sennheiser Momentum 4">
+                                </div>
+                                <div class="alternativa-info">
+                                    <h4>Sennheiser Momentum 4</h4>
+                                    <div class="alternativa-calificacion">
+                                        <div class="estrellas">
+                                            <span class="estrella llena">★</span>
+                                            <span class="estrella llena">★</span>
+                                            <span class="estrella llena">★</span>
+                                            <span class="estrella llena">★</span>
+                                            <span class="estrella">★</span>
+                                        </div>
+                                        <span class="num-opiniones">(92)</span>
+                                    </div>
+                                    <div class="alternativa-precio">
+                                        <span class="desde">Desde</span>
+                                        <span class="precio">$139.900</span>
+                                    </div>
+                                    <div class="alternativa-tiendas">
+                                        <span>Disponible en 5 tiendas</span>
+                                    </div>
+                                    <a href="/comparar/audifonos/sennheiser-momentum-4" class="btn-ver-producto">Ver producto</a>
+                                </div>
+                            </div>
+                        
+                            <!-- Alternativa 4 -->
+                            <div class="producto-alternativa">
+                                <div class="alternativa-imagen">
+                                    <img src="/img/productos/alternativa4.jpg" alt="JBL Tour One">
+                                </div>
+                                <div class="alternativa-info">
+                                    <h4>JBL Tour One</h4>
+                                    <div class="alternativa-calificacion">
+                                        <div class="estrellas">
+                                            <span class="estrella llena">★</span>
+                                            <span class="estrella llena">★</span>
+                                            <span class="estrella llena">★</span>
+                                            <span class="estrella llena">★</span>
+                                            <span class="estrella">★</span>
+                                        </div>
+                                        <span class="num-opiniones">(64)</span>
+                                    </div>
+                                    <div class="alternativa-precio">
+                                        <span class="desde">Desde</span>
+                                        <span class="precio">$119.900</span>
+                                    </div>
+                                    <div class="alternativa-tiendas">
+                                        <span>Disponible en 4 tiendas</span>
+                                    </div>
+                                    <a href="/comparar/audifonos/jbl-tour-one" class="btn-ver-producto">Ver producto</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Tabla comparativa -->
+                        <div class="tabla-comparativa">
+                            <h3>Comparativa de especificaciones</h3>
+                            <div class="tabla-scroll">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Modelo</th>
+                                            <th>Precio desde</th>
+                                            <th>Autonomía</th>
+                                            <th>Cancelación de ruido</th>
+                                            <th>Conectividad</th>
+                                            <th>Peso</th>
+                                            <th>Valoración</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Audífonos Bluetooth Premium</td>
+                                            <td>$89.900</td>
+                                            <td>30 horas</td>
+                                            <td>ANC adaptativo</td>
+                                            <td>Bluetooth 5.2</td>
+                                            <td>250g</td>
+                                            <td>4.5/5</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sony WH-1000XM4</td>
+                                            <td>$149.900</td>
+                                            <td>30 horas</td>
+                                            <td>ANC adaptativo</td>
+                                            <td>Bluetooth 5.0</td>
+                                            <td>254g</td>
+                                            <td>4.8/5</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Bose QuietComfort 45</td>
+                                            <td>$129.900</td>
+                                            <td>24 horas</td>
+                                            <td>ANC</td>
+                                            <td>Bluetooth 5.1</td>
+                                            <td>240g</td>
+                                            <td>4.6/5</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sennheiser Momentum 4</td>
+                                            <td>$139.900</td>
+                                            <td>60 horas</td>
+                                            <td>ANC adaptativo</td>
+                                            <td>Bluetooth 5.2</td>
+                                            <td>293g</td>
+                                            <td>4.5/5</td>
+                                        </tr>
+                                        <tr>
+                                            <td>JBL Tour One</td>
+                                            <td>$119.900</td>
+                                            <td>25 horas</td>
+                                            <td>ANC adaptativo</td>
+                                            <td>Bluetooth 5.0</td>
+                                            <td>268g</td>
+                                            <td>4.3/5</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="pregunta">
+                            <div class="pregunta-header" id="pregunta2-header">
+                                <h3>¿Son compatibles con dispositivos iOS y Android?</h3>
+                                <button class="btn-expandir" aria-expanded="false" aria-controls="pregunta2-respuesta">
+                                    <svg viewBox="0 0 24 24" width="24" height="24">
+                                        <path d="M7 10l5 5 5-5z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="pregunta-respuesta" id="pregunta2-respuesta" hidden>
+                                <p>Sí, estos audífonos son compatibles con ambos sistemas operativos. Para una experiencia completa, puedes descargar la aplicación dedicada disponible tanto en la App Store como en Google Play.</p>
+                            </div>
+                        </div>
+                    
+                        <div class="pregunta">
+                            <div class="pregunta-header" id="pregunta3-header">
+                                <h3>¿Se pueden usar durante actividades deportivas?</h3>
+                                <button class="btn-expandir" aria-expanded="false" aria-controls="pregunta3-respuesta">
+                                    <svg viewBox="0 0 24 24" width="24" height="24">
+                                        <path d="M7 10l5 5 5-5z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="pregunta-respuesta" id="pregunta3-respuesta" hidden>
+                                <p>Aunque tienen resistencia al sudor con clasificación IPX4, están diseñados principalmente para uso diario y viajes. Para actividades deportivas intensas, recomendamos modelos específicos con mayor resistencia al agua y mejor sujeción.</p>
+                            </div>
+                        </div>
+                    
+                        <div class="pregunta">
+                            <div class="pregunta-header" id="pregunta4-header">
+                                <h3>¿Cómo es la calidad de las llamadas en ambientes ruidosos?</h3>
+                                <button class="btn-expandir" aria-expanded="false" aria-controls="pregunta4-respuesta">
+                                    <svg viewBox="0 0 24 24" width="24" height="24">
+                                        <path d="M7 10l5 5 5-5z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="pregunta-respuesta" id="pregunta4-respuesta" hidden>
+                                <p>Gracias a los múltiples micrófonos con tecnología de reducción de ruido, la calidad de llamadas es excelente incluso en ambientes ruidosos como calles concurridas o cafeterías. Los algoritmos de IA ayudan a filtrar el ruido de fondo y priorizar la voz humana.</p>
+                            </div>
+                        </div>
+                    </div>
+            <!-- Producto 2 -->
+<a href="/comparar/parlante-bluetooth" class="card-link">
+    <div class="card-producto">
+        <div class="producto-imagen">
+            <img src="/img/productos/parlante-bluetooth.jpg" alt="Parlante Bluetooth" class="imagen-responsive">
+            <button class="btn-favorito" aria-label="Favorito" onclick="event.preventDefault(); event.stopPropagation();">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M12 21l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4
+                    c1.54 0 3.04.99 3.57 2.36h.87C14.46 4.99 15.96 4 17.5 4
+                    20 4 22 6 22 8.5c0 3.78-3.4 6.86-8.55 11.18L12 21z"/>
+                </svg>
+            </button>
+        </div>
+        <div class="producto-info">
+            <p class="producto-categoria">Audio</p>
+            <h3 class="producto-titulo">Parlante Bluetooth Portátil</h3>
+            <p class="producto-precio">Desde <strong>$69.900</strong></p>
+        </div>
+    </div>
+</a>
+
+<!-- Producto 3 -->
+<a href="/comparar/smartwatch" class="card-link">
+    <div class="card-producto">
+        <div class="producto-imagen">
+            <img src="/img/productos/smartwatch.jpg" alt="Smartwatch" class="imagen-responsive">
+            <button class="btn-favorito" aria-label="Favorito" onclick="event.preventDefault(); event.stopPropagation();">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M12 21l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4
+                    c1.54 0 3.04.99 3.57 2.36h.87C14.46 4.99 15.96 4 17.5 4
+                    20 4 22 6 22 8.5c0 3.78-3.4 6.86-8.55 11.18L12 21z"/>
+                </svg>
+            </button>
+        </div>
+        <div class="producto-info">
+            <p class="producto-categoria">Wearables</p>
+            <h3 class="producto-titulo">Smartwatch Deportivo</h3>
+            <p class="producto-precio">Desde <strong>$79.900</strong></p>
+        </div>
+    </div>
+</a>
+
+<!-- Producto 4 -->
+<a href="/comparar/bateria-externa" class="card-link">
+    <div class="card-producto">
+        <div class="producto-imagen">
+            <img src="/img/productos/bateria-externa.jpg" alt="Batería Externa" class="imagen-responsive">
+            <button class="btn-favorito" aria-label="Favorito" onclick="event.preventDefault(); event.stopPropagation();">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M12 21l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4
+                    c1.54 0 3.04.99 3.57 2.36h.87C14.46 4.99 15.96 4 17.5 4
+                    20 4 22 6 22 8.5c0 3.78-3.4 6.86-8.55 11.18L12 21z"/>
+                </svg>
+            </button>
+        </div>
+        <div class="producto-info">
+            <p class="producto-categoria">Accesorios</p>
+            <h3 class="producto-titulo">Batería Externa 20000mAh</h3>
+            <p class="producto-precio">Desde <strong>$39.900</strong></p>
+        </div>
+    </div>
+</a>
+<script>
+    // Para la página de comparación de precios
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Funcionalidad para las miniaturas de la galería
+    const miniaturas = document.querySelectorAll('.miniatura');
+    const imagenPrincipal = document.getElementById('imagen-principal');
+
+    miniaturas.forEach(miniatura => {
+        miniatura.addEventListener('click', function() {
+            // Actualizar la imagen principal
+            imagenPrincipal.src = this.getAttribute('data-img');
+            
+            // Actualizar clase activa
+            miniaturas.forEach(m => m.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+
+    // Funcionalidad para las pestañas (tabs)
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const tabId = this.getAttribute('data-tab');
+            
+            // Actualizar botones activos
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Actualizar paneles activos
+            tabPanels.forEach(panel => panel.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
+
+    // Preguntas frecuentes
+    const preguntaHeaders = document.querySelectorAll('.pregunta-header');
+    
+    preguntaHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+            const respuesta = document.getElementById(this.getAttribute('aria-controls'));
+            const boton = this.querySelector('.btn-expandir');
+            const estaExpandido = boton.getAttribute('aria-expanded') === 'true';
+            
+            // Cambiar estado
+            boton.setAttribute('aria-expanded', !estaExpandido);
+            respuesta.hidden = estaExpandido;
+            
+            // Rotar icono
+            if (estaExpandido) {
+                boton.style.transform = 'rotate(0deg)';
+            } else {
+                boton.style.transform = 'rotate(180deg)';
+            }
+        });
+    });
+
+    // Funcionalidades específicas del comparador de precios
+    const btnCrearAlerta = document.querySelector('.btn-crear-alerta');
+    if (btnCrearAlerta) {
+        btnCrearAlerta.addEventListener('click', function() {
+            const precioAlerta = document.querySelector('.precio-input input').value;
+            alert(`Se ha creado una alerta para cuando el precio baje de $${precioAlerta}`);
+            // Aquí iría la lógica para registrar la alerta
+        });
+    }
+
+    // Filtros de comparación
+    const filtros = document.querySelectorAll('.filtros-comparacion select');
+    filtros.forEach(filtro => {
+        filtro.addEventListener('change', function() {
+            console.log(`Filtro ${this.id} cambiado a: ${this.value}`);
+            // Aquí iría la lógica para filtrar las ofertas
+        });
+    });
+
+    // Cargar más ofertas
+    const btnCargarMasOfertas = document.querySelector('.btn-cargar-mas-ofertas');
+    if (btnCargarMasOfertas) {
+        btnCargarMasOfertas.addEventListener('click', function() {
+            console.log('Cargando más ofertas...');
+            // Aquí iría la lógica para cargar más ofertas
+        });
+    }
+
+    // Ir a ver oferta
+    const botonesVerOferta = document.querySelectorAll('.btn-ir-oferta');
+    botonesVerOferta.forEach(boton => {
+        boton.addEventListener('click', function() {
+            const tienda = this.closest('.oferta-item').querySelector('.nombre-tienda').textContent;
+            const precio = this.closest('.oferta-item').querySelector('.precio').textContent;
+            console.log(`Redirigiendo a oferta en ${tienda} por ${precio}`);
+            // Aquí iría la redirección a la tienda
+        });
+    });
+
+    // Ver todas las ofertas (scroll hasta la sección)
+    const btnVerOfertas = document.querySelector('.btn-ver-ofertas');
+    if (btnVerOfertas) {
+        btnVerOfertas.addEventListener('click', function() {
+            const seccionOfertas = document.querySelector('.comparacion-precios');
+            seccionOfertas.scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+});
+<!-- Fin del script -->
+</script>
+
+</body>
+</html>
