@@ -1,0 +1,1617 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparador de Precios</title>
+    <link rel="stylesheet" href="CSS/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> 
+</head>
+<body>
+  
+  <header>
+    <div class="container">
+      <!-- Botón hamburguesa -->
+      <label class="burger menu-toggle" for="burger">
+        <input type="checkbox" id="burger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span> 
+      </label>
+  
+      <!-- Logo -->
+      <a href="index.html" class="logo-link">
+        <div class="logo">
+          <img src="IMG/ico/ofertia (1).png" alt="Logo Ofertia">
+        </div>
+      </a>
+  
+      <!-- Barra de búsqueda -->
+      <div class="search-bar" bis_skin_checked="1">
+        <input type="text" placeholder="Buscar productos...">
+        <button aria-label="Buscar"><i class="fas fa-search"></i></button>
+      </div>
+  
+      <!-- Acciones de usuario -->
+      <div class="user-actions">
+        <a href="favoritos.html">Favoritos</a>
+        <a href="iniciar_sesion.html">Usuario</a>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Menú lateral (este puede permanecer fuera del div.container del header si así lo prefieres para su posicionamiento) -->
+  <div class="menu-lateral" id="menuCategorias">
+    <div class="menu-header">
+      <span class="menu-titulo">Categorías</span>
+      <button class="btn-cerrar" onclick="toggleMenu()">✕</button>
+    </div>
+    <ul class="lista-categorias">
+      <li onclick="mostrarSubcategorias('Tecnología')">Tecnología <span>›</span></li>
+      <li onclick="mostrarSubcategorias('Electrodomésticos')">Electrodomésticos <span>›</span></li>
+      <li onclick="mostrarSubcategorias('Moda')">Moda <span>›</span></li>
+      <li onclick="mostrarSubcategorias('Juguetes')">Juguetes <span>›</span></li>
+      <li onclick="mostrarSubcategorias('Hogar')">Hogar y muebles <span>›</span></li>
+      <li onclick="mostrarSubcategorias('Libros')">Libros y papelería <span>›</span></li>
+    </ul>
+    <!-- Subcategorías -->
+    <div class="menu-subcategorias" id="subcategoriasBox">
+      <button class="btn-volver" onclick="volverCategorias()">← Volver</button>
+      <h4 id="tituloSubcategoria">Subcategorías</h4>
+      <ul id="listaSubcategorias"></ul>
+    </div>
+  </div>
+
+<script>
+  const subcategorias = {
+    "Tecnología": ["Audífonos", "Celulares", "Computadores", "Accesorios"],
+    "Electrodomésticos": ["Lavadoras", "Neveras", "Cafeteras"],
+    "Moda": ["Hombre", "Mujer", "Zapatos"],
+    "Juguetes": ["Educativos", "Muñecos"],
+    "Hogar": ["Sofás", "Camas", "Decoración"],
+    "Libros": ["Escolares", "Novelas", "Papelería"]
+  };
+
+  function toggleMenu() {
+    const menu = document.getElementById('menuCategorias');
+    const isOpen = menu.style.display === 'flex';
+    menu.style.display = isOpen ? 'none' : 'flex';
+    document.getElementById('subcategoriasBox').style.display = 'none';
+    document.getElementById('burger').checked = !isOpen;
+  }
+
+  function mostrarSubcategorias(categoria) {
+    const box = document.getElementById('subcategoriasBox');
+    const list = document.getElementById('listaSubcategorias');
+    const titulo = document.getElementById('tituloSubcategoria');
+
+    list.innerHTML = "";
+    titulo.textContent = categoria;
+
+    if (subcategorias[categoria]) {
+      subcategorias[categoria].forEach(sub => {
+        const item = document.createElement('li');
+        item.textContent = sub;
+        list.appendChild(item);
+      });
+    }
+
+    box.style.display = 'block';
+  }
+
+  function volverCategorias() {
+    document.getElementById('subcategoriasBox').style.display = 'none';
+  }
+</script>
+
+<nav id="navbar">
+  <div class="container">
+    
+  <!-- PANEL DE CATEGORÍAS -->
+    <div class="menu">
+
+
+      <a href="#categorias">Categorías</a>
+      <a href="#soporte">Soporte</a>
+      <a href="#historial">Historial</a>
+      <a href="#ofertas">Ofertas</a>
+    </div>
+  </div>
+
+  <script>
+    let lastScrollTop = 0;
+    const nav = document.querySelector("nav");
+  
+    window.addEventListener("scroll", function () {
+      let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  
+      if (scrollTop > lastScrollTop) {
+        // Scrolling hacia abajo
+        nav.style.top = "-100px";
+      } else {
+        // Scrolling hacia arriba
+        nav.style.top = "60px";
+      }
+  
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    });
+  </script>
+
+
+  
+</nav>
+
+
+
+
+
+<div id="slider-container">
+  <div class="slider">
+      <div class="slide">
+          <div class="box"><img src="IMG/slider/MARKET-SALE_page-0001.jpg" alt=""></div>
+      </div>
+      <div class="slide">
+          <div class="box"><img src="IMG/slider/MARKET-SALE_page-0004.jpg" alt=""></div>
+      </div>
+      <div class="slide">
+          <div class="box"><img src="IMG/slider/MARKET-SALE_page-0005.jpg" alt=""></div>
+      </div>
+      <div class="slide">
+          <div class="box"><img src="IMG/slider/MARKET-SALE_page-0003.jpg" alt=""></div>
+      </div>
+      <div class="slide">
+          <div class="box"><img src="IMG/slider/MARKET-SALE_page-0002.jpg" alt=""></div>
+      </div>
+
+  </div>
+</div>
+
+
+
+<!-- Productos -->
+<!-- Productos - Tecnología -->
+<section class="contenedor-destacado">
+  <div class="seccion-header">
+    <div class="contenedor-titulo">
+      <h2 class="titulo-seccion">Productos de <span class="categoria">Tecnología</span></h2>
+      <a href="categoria-tecnologia.html" class="ver-mas">Ver más productos</a>
+    </div>
+  </div>  <div class="slider-wrapper">
+    <button class="btn-nav left" data-slider="tech-prev">‹</button>
+    <div class="slider-content-product" id="slider-tech">
+      <!-- Producto 1 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://www.alkosto.com/medias/8806094710625-001-750Wx750H?context=bWFzdGVyfGltYWdlc3wxMzY1MnxpbWFnZS93ZWJwfGFEQTRMMmhqWkM4eE5Ea3lOVFE0TWpjMU5EQTNPQzg0T0RBMk1EazBOekV3TmpJMVh6QXdNVjgzTlRCWGVEYzFNRWd8YjhjYWJkYWYyMzdlYWY3ZDE3NmQwZDExNWNkMmY3ZDUyMWZiMjkxN2MxM2ZjMWZiYTcwZTBlY2FhMzI1ZDE0OQ" alt="Samsung Galaxy S23" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Tecnología</p>
+          <h3 class="producto-titulo">Samsung Galaxy S23 128GB</h3>
+          <p class="producto-precio">Desde <strong>$3.200.000</strong></p>
+        </div>
+        <a href="producto.html?id=samsung-galaxy-s23" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 2 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_779146-MLA53778959612_022023-O.webp alt="Apple AirPods Pro 2" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Tecnología</p>
+          <h3 class="producto-titulo">Apple AirPods Pro 2da Gen</h3>
+          <p class="producto-precio">Desde <strong>$1.100.000</strong></p>
+        </div>
+        <a href="producto.html?id=apple-airpods-pro-2da-gen" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 3 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_897490-MLU77338586016_072024-O.webp" alt="Portátil Lenovo 15.6" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Tecnología</p>
+          <h3 class="producto-titulo">Portátil Lenovo 15.6" Ryzen 5 8GB 512GB SSD</h3>
+          <p class="producto-precio">Desde <strong>$2.200.000</strong></p>
+        </div>
+        <a href="producto.html?id=portatil-lenovo-ryzen5-8gb-512ssd" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 4 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_993572-MLA73980600102_012024-O.webp" alt="Celular Xiaomi Redmi Note 12" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Tecnología</p>
+          <h3 class="producto-titulo">Xiaomi Redmi Note 12 128GB</h3>
+          <p class="producto-precio">Desde <strong>$850.000</strong></p>
+        </div>
+        <a href="producto.html?id=xiaomi-redmi-note-12-128gb" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 5 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_821721-MLU77335571890_072024-O.webp" alt="Audífonos Bluetooth JBL" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Tecnología</p>
+          <h3 class="producto-titulo">Audífonos Bluetooth JBL Tune 510BT</h3>
+          <p class="producto-precio">Desde <strong>$120.000</strong></p>
+        </div>
+        <a href="producto.html?id=audifonos-bluetooth-jbl-tune-510bt" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 6 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_606167-MCO79431213854_092024-O.webp" alt="Smartwatch Amazfit Bip U" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Tecnología</p>
+          <h3 class="producto-titulo">Smartwatch Amazfit Bip U</h3>
+          <p class="producto-precio">Desde <strong>$220.000</strong></p>
+        </div>
+        <a href="producto.html?id=smartwatch-amazfit-bip-u" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 7 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_687759-MLU78817843472_092024-O.webp" alt="Tablet Samsung Galaxy Tab A8" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Tecnología</p>
+          <h3 class="producto-titulo">Tablet Samsung Galaxy Tab A8 64GB</h3>
+          <p class="producto-precio">Desde <strong>$750.000</strong></p>
+        </div>
+        <a href="producto.html?id=tablet-samsung-galaxy-tab-a8-64gb" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 8 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_612980-MLA76911848964_062024-O.webp" alt="Monitor LG 24'' Full HD" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Tecnología</p>
+          <h3 class="producto-titulo">Monitor LG 24'' Full HD IPS</h3>
+          <p class="producto-precio">Desde <strong>$520.000</strong></p>
+        </div>
+        <a href="producto.html?id=monitor-lg-24-fullhd-ips" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 9 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_907894-MCO31558532242_072019-O.webp" alt="Disco Duro Externo Seagate 1TB" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Tecnología</p>
+          <h3 class="producto-titulo">Disco Duro Externo Seagate 1TB</h3>
+          <p class="producto-precio">Desde <strong>$210.000</strong></p>
+        </div>
+        <a href="producto.html?id=disco-duro-externo-seagate-1tb" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 10 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_864807-MLA77594879101_072024-O.webp" alt="Teclado Mecánico Redragon Kumara" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Tecnología</p>
+          <h3 class="producto-titulo">Teclado Mecánico Redragon Kumara</h3>
+          <p class="producto-precio">Desde <strong>$150.000</strong></p>
+        </div>
+        <a href="producto.html?id=teclado-mecanico-redragon-kumara" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 11 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_848052-MLU72570326002_112023-O.webp" alt="Mouse Logitech M185" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Tecnología</p>
+          <h3 class="producto-titulo">Mouse Inalámbrico Logitech M185</h3>
+          <p class="producto-precio">Desde <strong>$45.000</strong></p>
+        </div>
+        <a href="producto.html?id=mouse-inalambrico-logitech-m185" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 12 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_760342-MLA49170463523_022022-O.webp" alt="Cámara Web Logitech C920" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Tecnología</p>
+          <h3 class="producto-titulo">Cámara Web Logitech C920 HD</h3>
+          <p class="producto-precio">Desde <strong>$230.000</strong></p>
+        </div>
+        <a href="producto.html?id=camara-web-logitech-c920-hd" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 13 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://media.falabella.com/falabellaCO/5221613_1/w=800,h=800,fit=pad" alt="Impresora HP Ink Tank 315" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Tecnología</p>
+          <h3 class="producto-titulo">Impresora HP Ink Tank 315</h3>
+          <p class="producto-precio">Desde <strong>$520.000</strong></p>
+        </div>
+        <a href="producto.html?id=impresora-hp-ink-tank-315" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 14 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://exitocol.vtexassets.com/arquivos/ids/27169249/Televisor-LG-50-Pulgadas-LED-Uhd-4K-Smart-TV-50UR7800PSBAWC-3382700_a.jpg?v=638792026341870000" alt="Smart TV LG 50'' 4K" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Tecnología</p>
+          <h3 class="producto-titulo">Smart TV LG 50'' 4K UHD</h3>
+          <p class="producto-precio">Desde <strong>$1.499.000</strong></p>
+        </div>
+        <a href="producto.html?id=smart-tv-lg-50-4k-uhd" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 15 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://www.alkosto.com/medias/193575007250-001-750Wx750H?context=bWFzdGVyfGltYWdlc3w0NDQ0fGltYWdlL3dlYnB8YUdVd0wyaGxNUzh4TkRNMk5EZ3hNekkyTWpnM09DOHhPVE0xTnpVd01EY3lOVEJmTURBeFh6YzFNRmQ0TnpVd1NBfDdlMTVjODcwMTJiYmZhODZjYjQ1NjJkOGY0NGRhMzAxMDI1NjY0ODNkM2IyYTZhMDRlNDIxMGQwNDcxM2MxMjQ" alt="Google Chromecast 4K" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Tecnología</p>
+          <h3 class="producto-titulo">Google Chromecast 4K con Google TV</h3>
+          <p class="producto-precio">Desde <strong>$250.000</strong></p>
+        </div>
+        <a href="producto.html?id=google-chromecast-4k-google-tv" class="card-overlay-link"></a>
+      </div>
+    </div>
+    <button class="btn-nav right" data-slider="tech-next">›</button>
+  </div>
+  <div class="product-indicators" id="indicators-tech"></div>
+</section>
+
+<!-- Productos - Electrodomésticos -->
+<section class="contenedor-destacado">
+  <div class="seccion-header">
+    <div class="contenedor-titulo">
+      <h2 class="titulo-seccion">Productos de <span class="categoria">Electrodomésticos</span></h2>
+      <a href="categoria-electrodomesticos.html" class="ver-mas">Ver más productos</a>
+    </div>  <div class="slider-wrapper">
+    <button class="btn-nav left" data-slider="elec-prev">‹</button>
+    <div class="slider-content-product" id="slider-elec">
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://easycolombia.vtexassets.com/arquivos/ids/246188-1200-1200?v=638781658397530000&width=1200&height=1200&aspect=true" alt="Nevera Mabe 300L" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Electrodomésticos</p>
+          <h3 class="producto-titulo">Nevera Mabe 300L</h3>
+          <p class="producto-precio">Desde <strong>$1.200.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://osterco.vtexassets.com/arquivos/ids/166613-1200-auto?v=638780963005630000&width=1200&height=auto&aspect=true" alt="Cafetera Oster" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Electrodomésticos</p>
+          <h3 class="producto-titulo">Cafetera Oster</h3>
+          <p class="producto-precio">Desde <strong>$180.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 3 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://www.alkosto.com/medias/8806095684109-001-750Wx750H?context=bWFzdGVyfGltYWdlc3w4MjcyfGltYWdlL3dlYnB8YUdWaUwyZzRPQzh4TkRZMk1EQXlORGd5Tnprek5DODRPREEyTURrMU5qZzBNVEE1WHpBd01WODNOVEJYZURjMU1FZ3wxZTE0MmIzMmIwZGQ2Yjc4MTk4YzcyZjYwODVjYzNiM2Y5YTk1MWYyOTkzODE4OWVlYmFjOTIwYmFlYjQyYzdh" alt="Microondas Samsung" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Electrodomésticos</p>
+          <h3 class="producto-titulo">Microondas Samsung 23L</h3>
+          <p class="producto-precio">Desde <strong>$350.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 4 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://exitocol.vteximg.com.br/arquivos/ids/26309357/Lavadora-Csuperior-17kg-37lb-1444872_a.jpg?v=638721330335530000" alt="Lavadora LG 17kg" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Electrodomésticos</p>
+          <h3 class="producto-titulo">Lavadora LG 17kg</h3>
+          <p class="producto-precio">Desde <strong>$1.600.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 5 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://media.falabella.com/falabellaCO/119747406_01/w=800,h=800,fit=pad" alt="Aspiradora Electrolux" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Electrodomésticos</p>
+          <h3 class="producto-titulo">Aspiradora Electrolux</h3>
+          <p class="producto-precio">Desde <strong>$320.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 6 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://media.falabella.com/sodimacCO/319918/w=1036,h=832,f=webp,fit=contain,q=85" alt="Licuadora Oster" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Electrodomésticos</p>
+          <h3 class="producto-titulo">Licuadora Oster</h3>
+          <p class="producto-precio">Desde <strong>$150.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 7 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://media.falabella.com/sodimacCO/560106/w=1036,h=832,f=webp,fit=contain,q=85" alt="Horno Eléctrico Haceb" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Electrodomésticos</p>
+          <h3 class="producto-titulo">Horno Eléctrico Haceb</h3>
+          <p class="producto-precio">Desde <strong>$280.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 8 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://media.falabella.com/sodimacCO/515236/w=1036,h=832,f=webp,fit=contain,q=85" alt="Ventilador Samurai" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Electrodomésticos</p>
+          <h3 class="producto-titulo">Ventilador Samurai</h3>
+          <p class="producto-precio">Desde <strong>$110.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 9 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_826870-MCO51371008232_092022-O.webp" alt="Plancha Black+Decker" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Electrodomésticos</p>
+          <h3 class="producto-titulo">Plancha Black+Decker</h3>
+          <p class="producto-precio">Desde <strong>$70.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 10 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://media.falabella.com/sodimacCO/712918/w=1036,h=832,f=webp,fit=contain,q=85" alt="Freidora de Aire Imusa" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Electrodomésticos</p>
+          <h3 class="producto-titulo">Freidora de Aire Imusa</h3>
+          <p class="producto-precio">Desde <strong>$320.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 11 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_788023-MLA84538464422_052025-O.webp" alt="Sanduchera Universal" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Electrodomésticos</p>
+          <h3 class="producto-titulo">Sanduchera Universal</h3>
+          <p class="producto-precio">Desde <strong>$60.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 12 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_618628-MLA84852118335_052025-O.webp" alt="Extractor de jugos Oster" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Electrodomésticos</p>
+          <h3 class="producto-titulo">Extractor de jugos Oster</h3>
+          <p class="producto-precio">Desde <strong>$210.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 13 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://media.falabella.com/sodimacCO/499179/w=1036,h=832,f=webp,fit=contain,q=85" alt="Calentador Haceb" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Electrodomésticos</p>
+          <h3 class="producto-titulo">Calentador Haceb</h3>
+          <p class="producto-precio">Desde <strong>$400.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 14 -->
+      <div class="card-producto">
+        <div class="https://http2.mlstatic.com/D_NQ_NP_731293-MLU77879603886_082024-O.webp" alt="Batidora Universal" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Electrodomésticos</p>
+          <h3 class="producto-titulo">Batidora Universal</h3>
+          <p class="producto-precio">Desde <strong>$90.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 15 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://www.alkosto.com/medias/7705946492249-001-750Wx750H?context=bWFzdGVyfGltYWdlc3wyMzY4MTN8aW1hZ2UvcG5nfGFXMWhaMlZ6TDJoaE1DOW9aall2T1RFeE56UTFNVEU1TURNd01pNXdibWN8YmU2NDNkNzQ4NzMwMmMzMWYyMDg2MGFmNjRjMDE3ZjU0Y2Y2ODI2N2NlYmVjZTY4ZGJiNTA1NjBmOWIzOTA3Zg" alt="Tostadora Oster" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Electrodomésticos</p>
+          <h3 class="producto-titulo">Tostadora Oster</h3>
+          <p class="producto-precio">Desde <strong>$110.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+    </div>
+    <button class="btn-nav right" data-slider="elec-next">›</button>
+  </div>
+  <div class="product-indicators" id="indicators-elec"></div>
+</section>
+
+<!-- Productos - Moda -->
+<section class="contenedor-destacado">
+  <div class="seccion-header">
+    <div class="contenedor-titulo">
+      <h2 class="titulo-seccion">Productos de <span class="categoria">Moda</span></h2>
+      <a href="categoria-moda.html" class="ver-mas">Ver más productos</a>
+    </div>  <div class="slider-wrapper">
+    <button class="btn-nav left" data-slider="moda-prev">‹</button>
+    <div class="slider-content-product" id="slider-moda">
+      <!-- Tarjetas de moda -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://via.placeholder.com/200x150" alt="Zapatos" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M12 21l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4
+              c1.54 0 3.04.99 3.57 2.36h.87C14.46 4.99 15.96 4 17.5 4
+              20 4 22 6 22 8.5c0 3.78-3.4 6.86-8.55 11.18L12 21z"/>
+            </svg>
+          </button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Moda</p>
+          <h3 class="producto-titulo">Zapatos Casuales</h3>
+          <p class="producto-precio">Desde <strong>$150.000</strong></p>
+        </div>
+
+      <!-- Más tarjetas de moda... -->
+    </div>
+    <div class="card-producto">
+      <div class="producto-imagen">
+        <img src="https://falabella.scene7.com/is/image/FalabellaCO/8812311_1?wid=800&hei=800&qlt=70" alt="Camiseta Tommy Hilfiger" class="imagen-responsive">
+        <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+      </div>
+      <div class="producto-info">
+        <p class="producto-categoria">Moda</p>
+        <h3 class="producto-titulo">Camiseta Tommy Hilfiger</h3>
+        <p class="producto-precio">Desde <strong>$150.000</strong></p>
+      </div>
+      <a href="producto.html" class="card-overlay-link"></a>
+    </div>
+    <div class="card-producto">
+      <div class="producto-imagen">
+        <img src="https://falabella.scene7.com/is/image/FalabellaCO/11500381_1?wid=800&hei=800&qlt=70" alt="Pantalón Dockers" class="imagen-responsive">
+        <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+      </div>
+      <div class="producto-info">
+        <p class="producto-categoria">Moda</p>
+        <h3 class="producto-titulo">Pantalón Dockers</h3>
+        <p class="producto-precio">Desde <strong>$130.000</strong></p>
+      </div>
+      <a href="producto.html" class="card-overlay-link"></a>
+    </div>
+    <div class="card-producto">
+      <div class="producto-imagen">
+        <img src="https://falabella.scene7.com/is/image/FalabellaCO/8812311_1?wid=800&hei=800&qlt=70" alt="Chaqueta Mango Mujer" class="imagen-responsive">
+        <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+      </div>
+      <div class="producto-info">
+        <p class="producto-categoria">Moda</p>
+        <h3 class="producto-titulo">Chaqueta Mango Mujer</h3>
+        <p class="producto-precio">Desde <strong>$210.000</strong></p>
+      </div>
+      <a href="producto.html" class="card-overlay-link"></a>
+    </div>
+    <div class="card-producto">
+      <div class="producto-imagen">
+        <img src="https://falabella.scene7.com/is/image/FalabellaCO/11500381_1?wid=800&hei=800&qlt=70" alt="Tenis Adidas Superstar" class="imagen-responsive">
+        <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+      </div>
+      <div class="producto-info">
+        <p class="producto-categoria">Moda</p>
+        <h3 class="producto-titulo">Tenis Adidas Superstar</h3>
+        <p class="producto-precio">Desde <strong>$320.000</strong></p>
+      </div>
+      <a href="producto.html" class="card-overlay-link"></a>
+    </div>
+    <div class="card-producto">
+      <div class="producto-imagen">
+        <img src="https://falabella.scene7.com/is/image/FalabellaCO/8812311_1?wid=800&hei=800&qlt=70" alt="Correa Fossil" class="imagen-responsive">
+        <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+      </div>
+      <div class="producto-info">
+        <p class="producto-categoria">Moda</p>
+        <h3 class="producto-titulo">Correa Fossil</h3>
+        <p class="producto-precio">Desde <strong>$110.000</strong></p>
+      </div>
+      <a href="producto.html" class="card-overlay-link"></a>
+    </div>
+    <div class="card-producto">
+      <div class="producto-imagen">
+        <img src="https://falabella.scene7.com/is/image/FalabellaCO/11500381_1?wid=800&hei=800&qlt=70" alt="Gorra New Era" class="imagen-responsive">
+        <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+      </div>
+      <div class="producto-info">
+        <p class="producto-categoria">Moda</p>
+        <h3 class="producto-titulo">Gorra New Era</h3>
+        <p class="producto-precio">Desde <strong>$80.000</strong></p>
+      </div>
+      <a href="producto.html" class="card-overlay-link"></a>
+    </div>
+    <div class="card-producto">
+      <div class="producto-imagen">
+        <img src="https://falabella.scene7.com/is/image/FalabellaCO/8812311_1?wid=800&hei=800&qlt=70" alt="Reloj Casio Vintage" class="imagen-responsive">
+        <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+      </div>
+      <div class="producto-info">
+        <p class="producto-categoria">Moda</p>
+        <h3 class="producto-titulo">Reloj Casio Vintage</h3>
+        <p class="producto-precio">Desde <strong>$95.000</strong></p>
+      </div>
+      <a href="producto.html" class="card-overlay-link"></a>
+    </div>
+</div>
+    <button class="btn-nav right" data-slider="moda-next">›</button>
+  </div>
+  <div class="product-indicators" id="indicators-moda"></div>
+</section>
+
+<!-- Productos - Juguetes -->
+<section class="contenedor-destacado">
+  <div class="seccion-header">
+    <div class="contenedor-titulo">
+      <h2 class="titulo-seccion">Productos de <span class="categoria">Juguetes</span></h2>
+      <a href="categoria-juguetes.html" class="ver-mas">Ver más productos</a>
+    </div>
+  </div>
+  <div class="slider-wrapper">
+    <button class="btn-nav left" data-slider="juguetes-prev">‹</button>
+    <div class="slider-content-product" id="slider-juguetes">
+      <!-- Producto 1 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://www.juguetron.mx/media/catalog/product/cache/1/image/600x/040ec09b1e35df139433887a97daa66f/7/0/7000000000000_1.jpg" alt="Lego Classic" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Juguetes</p>
+          <h3 class="producto-titulo">Lego Classic Caja Creativa</h3>
+          <p class="producto-precio">Desde <strong>$120.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 2 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://www.juguetron.mx/media/catalog/product/cache/1/image/600x/040ec09b1e35df139433887a97daa66f/7/0/7000000000000_2.jpg" alt="Muñeca Barbie" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Juguetes</p>
+          <h3 class="producto-titulo">Muñeca Barbie Fashionista</h3>
+          <p class="producto-precio">Desde <strong>$85.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 3 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://www.juguetron.mx/media/catalog/product/cache/1/image/600x/040ec09b1e35df139433887a97daa66f/7/0/7000000000000_3.jpg" alt="Hot Wheels Pista" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Juguetes</p>
+          <h3 class="producto-titulo">Hot Wheels Pista Looping</h3>
+          <p class="producto-precio">Desde <strong>$95.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 4 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://www.juguetron.mx/media/catalog/product/cache/1/image/600x/040ec09b1e35df139433887a97daa66f/7/0/7000000000000_4.jpg" alt="Rompecabezas Ravensburger" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Juguetes</p>
+          <h3 class="producto-titulo">Rompecabezas Ravensburger 1000 piezas</h3>
+          <p class="producto-precio">Desde <strong>$60.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 5 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://www.juguetron.mx/media/catalog/product/cache/1/image/600x/040ec09b1e35df139433887a97daa66f/7/0/7000000000000_5.jpg" alt="Play-Doh Pack" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Juguetes</p>
+          <h3 class="producto-titulo">Play-Doh Pack de 10 colores</h3>
+          <p class="producto-precio">Desde <strong>$45.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 6 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://www.juguetron.mx/media/catalog/product/cache/1/image/600x/040ec09b1e35df139433887a97daa66f/7/0/7000000000000_6.jpg" alt="Nerf Elite Disruptor" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Juguetes</p>
+          <h3 class="producto-titulo">Nerf Elite Disruptor</h3>
+          <p class="producto-precio">Desde <strong>$70.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 7 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://www.juguetron.mx/media/catalog/product/cache/1/image/600x/040ec09b1e35df139433887a97daa66f/7/0/7000000000000_7.jpg" alt="Monopoly Clásico" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Juguetes</p>
+          <h3 class="producto-titulo">Monopoly Clásico</h3>
+          <p class="producto-precio">Desde <strong>$110.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 8 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://www.juguetron.mx/media/catalog/product/cache/1/image/600x/040ec09b1e35df139433887a97daa66f/7/0/7000000000000_8.jpg" alt="Muñeco Marvel Spiderman" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Juguetes</p>
+          <h3 class="producto-titulo">Muñeco Marvel Spiderman</h3>
+          <p class="producto-precio">Desde <strong>$55.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 9 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://www.juguetron.mx/media/catalog/product/cache/1/image/600x/040ec09b1e35df139433887a97daa66f/7/0/7000000000000_9.jpg" alt="Jenga Hasbro" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Juguetes</p>
+          <h3 class="producto-titulo">Jenga Hasbro</h3>
+          <p class="producto-precio">Desde <strong>$65.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 10 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://www.juguetron.mx/media/catalog/product/cache/1/image/600x/040ec09b1e35df139433887a97daa66f/7/0/7000000000000_10.jpg" alt="Puzzle 3D Dinosaurio" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Juguetes</p>
+          <h3 class="producto-titulo">Puzzle 3D Dinosaurio</h3>
+          <p class="producto-precio">Desde <strong>$40.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 11 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://www.juguetron.mx/media/catalog/product/cache/1/image/600x/040ec09b1e35df139433887a97daa66f/7/0/7000000000000_11.jpg" alt="Carro Control Remoto" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Juguetes</p>
+          <h3 class="producto-titulo">Carro Control Remoto</h3>
+          <p class="producto-precio">Desde <strong>$130.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 12 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://www.juguetron.mx/media/catalog/product/cache/1/image/600x/040ec09b1e35df139433887a97daa66f/7/0/7000000000000_12.jpg" alt="Set Playmobil Policía" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Juguetes</p>
+          <h3 class="producto-titulo">Set Playmobil Policía</h3>
+          <p class="producto-precio">Desde <strong>$115.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 13 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://www.juguetron.mx/media/catalog/product/cache/1/image/600x/040ec09b1e35df139433887a97daa66f/7/0/7000000000000_13.jpg" alt="Muñeca LOL Surprise" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Juguetes</p>
+          <h3 class="producto-titulo">Muñeca LOL Surprise</h3>
+          <p class="producto-precio">Desde <strong>$98.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 14 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://www.juguetron.mx/media/catalog/product/cache/1/image/600x/040ec09b1e35df139433887a97daa66f/7/0/7000000000000_14.jpg" alt="Set de Bloques Mega Bloks" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Juguetes</p>
+          <h3 class="producto-titulo">Set de Bloques Mega Bloks</h3>
+          <p class="producto-precio">Desde <strong>$75.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 15 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://www.juguetron.mx/media/catalog/product/cache/1/image/600x/040ec09b1e35df139433887a97daa66f/7/0/7000000000000_15.jpg" alt="Pelota Antiestrés" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Juguetes</p>
+          <h3 class="producto-titulo">Pelota Antiestrés</h3>
+          <p class="producto-precio">Desde <strong>$25.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+    </div>
+    <button class="btn-nav right" data-slider="juguetes-next">›</button>
+  </div>
+  <div class="product-indicators" id="indicators-juguetes"></div>
+</section>
+<!-- Productos - Hogar y muebles -->
+<section class="contenedor-destacado">
+  <div class="seccion-header">
+    <div class="contenedor-titulo">
+      <h2 class="titulo-seccion">Productos de <span class="categoria">Hogar y muebles</span></h2>
+      <a href="categoria-hogar.html" class="ver-mas">Ver más productos</a>
+    </div>
+  </div>
+  <div class="slider-wrapper">
+    <button class="btn-nav left" data-slider="hogar-prev">‹</button>
+    <div class="slider-content-product" id="slider-hogar">
+      <!-- Producto 1 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://homecenterco.scene7.com/is/image/SodimacCO/307829?wid=800&hei=800&qlt=70" alt="Sofá 3 puestos" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Hogar y muebles</p>
+          <h3 class="producto-titulo">Sofá 3 puestos tapizado</h3>
+          <p class="producto-precio">Desde <strong>$1.200.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 2 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://falabella.scene7.com/is/image/FalabellaCO/8812311_1?wid=800&hei=800&qlt=70" alt="Cama Doble" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Hogar y muebles</p>
+          <h3 class="producto-titulo">Cama Doble con cabecero</h3>
+          <p class="producto-precio">Desde <strong>$950.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 3 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://alkosto.vteximg.com.br/arquivos/ids/213634-1000-1000/7704353364683.jpg" alt="Mesa de comedor" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Hogar y muebles</p>
+          <h3 class="producto-titulo">Mesa de comedor 4 puestos</h3>
+          <p class="producto-precio">Desde <strong>$700.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 4 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://falabella.scene7.com/is/image/FalabellaCO/11500381_1?wid=800&hei=800&qlt=70" alt="Silla ergonómica" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Hogar y muebles</p>
+          <h3 class="producto-titulo">Silla ergonómica de oficina</h3>
+          <p class="producto-precio">Desde <strong>$320.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 5 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://homecenterco.scene7.com/is/image/SodimacCO/307829?wid=800&hei=800&qlt=70" alt="Armario 2 puertas" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Hogar y muebles</p>
+          <h3 class="producto-titulo">Armario 2 puertas madera</h3>
+          <p class="producto-precio">Desde <strong>$650.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 6 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://falabella.scene7.com/is/image/FalabellaCO/8812311_1?wid=800&hei=800&qlt=70" alt="Lámpara de pie" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Hogar y muebles</p>
+          <h3 class="producto-titulo">Lámpara de pie moderna</h3>
+          <p class="producto-precio">Desde <strong>$180.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 7 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://alkosto.vteximg.com.br/arquivos/ids/213634-1000-1000/7704353364683.jpg" alt="Escritorio minimalista" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Hogar y muebles</p>
+          <h3 class="producto-titulo">Escritorio minimalista</h3>
+          <p class="producto-precio">Desde <strong>$290.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 8 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://homecenterco.scene7.com/is/image/SodimacCO/307829?wid=800&hei=800&qlt=70" alt="Silla comedor" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Hogar y muebles</p>
+          <h3 class="producto-titulo">Silla comedor tapizada</h3>
+          <p class="producto-precio">Desde <strong>$120.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 9 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://falabella.scene7.com/is/image/FalabellaCO/11500381_1?wid=800&hei=800&qlt=70" alt="Mesa de noche" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Hogar y muebles</p>
+          <h3 class="producto-titulo">Mesa de noche madera</h3>
+          <p class="producto-precio">Desde <strong>$90.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 10 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://alkosto.vteximg.com.br/arquivos/ids/213634-1000-1000/7704353364683.jpg" alt="Estantería 5 niveles" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Hogar y muebles</p>
+          <h3 class="producto-titulo">Estantería 5 niveles</h3>
+          <p class="producto-precio">Desde <strong>$210.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 11 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://homecenterco.scene7.com/is/image/SodimacCO/307829?wid=800&hei=800&qlt=70" alt="Cojín decorativo" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Hogar y muebles</p>
+          <h3 class="producto-titulo">Cojín decorativo</h3>
+          <p class="producto-precio">Desde <strong>$35.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 12 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://falabella.scene7.com/is/image/FalabellaCO/8812311_1?wid=800&hei=800&qlt=70" alt="Cortina blackout" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Hogar y muebles</p>
+          <h3 class="producto-titulo">Cortina blackout</h3>
+          <p class="producto-precio">Desde <strong>$80.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 13 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://alkosto.vteximg.com.br/arquivos/ids/213634-1000-1000/7704353364683.jpg" alt="Alfombra decorativa" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Hogar y muebles</p>
+          <h3 class="producto-titulo">Alfombra decorativa 120x170cm</h3>
+          <p class="producto-precio">Desde <strong>$150.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 14 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://homecenterco.scene7.com/is/image/SodimacCO/307829?wid=800&hei=800&qlt=70" alt="Cuadro decorativo" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Hogar y muebles</p>
+          <h3 class="producto-titulo">Cuadro decorativo moderno</h3>
+          <p class="producto-precio">Desde <strong>$60.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 15 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://falabella.scene7.com/is/image/FalabellaCO/11500381_1?wid=800&hei=800&qlt=70" alt="Juego de sábanas" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Hogar y muebles</p>
+          <h3 class="producto-titulo">Juego de sábanas 180 hilos</h3>
+          <p class="producto-precio">Desde <strong>$95.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+    </div>
+    <button class="btn-nav right" data-slider="hogar-next">›</button>
+  </div>
+  <div class="product-indicators" id="indicators-hogar"></div>
+</section>
+<!-- Productos - Libros y papelería -->
+<section class="contenedor-destacado">
+  <div class="seccion-header">
+    <div class="contenedor-titulo">
+      <h2 class="titulo-seccion">Productos de <span class="categoria">Libros y papelería</span></h2>
+      <a href="categoria-libros.html" class="ver-mas">Ver más productos</a>
+    </div>
+  </div>
+  <div class="slider-wrapper">
+    <button class="btn-nav left" data-slider="libros-prev">‹</button>
+    <div class="slider-content-product" id="slider-libros">
+      <!-- Producto 1 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://m.media-amazon.com/images/I/81eB+7+CkUL.jpg" alt="Cien años de soledad" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Libros y papelería</p>
+          <h3 class="producto-titulo">Cien años de soledad</h3>
+          <p class="producto-precio">Desde <strong>$45.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 2 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://m.media-amazon.com/images/I/71UwSHSZRnS.jpg" alt="El Principito" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Libros y papelería</p>
+          <h3 class="producto-titulo">El Principito</h3>
+          <p class="producto-precio">Desde <strong>$30.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 3 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://m.media-amazon.com/images/I/81bsw6fnUiL.jpg" alt="1984 George Orwell" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Libros y papelería</p>
+          <h3 class="producto-titulo">1984 - George Orwell</h3>
+          <p class="producto-precio">Desde <strong>$38.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 4 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://m.media-amazon.com/images/I/81drfTT9ZfL.jpg" alt="Agenda 2024" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Libros y papelería</p>
+          <h3 class="producto-titulo">Agenda 2024</h3>
+          <p class="producto-precio">Desde <strong>$25.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 5 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://m.media-amazon.com/images/I/71aFt4+OTOL.jpg" alt="El Alquimista" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Libros y papelería</p>
+          <h3 class="producto-titulo">El Alquimista</h3>
+          <p class="producto-precio">Desde <strong>$32.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 6 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://m.media-amazon.com/images/I/81AFocW+J6L.jpg" alt="Cuaderno universitario" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Libros y papelería</p>
+          <h3 class="producto-titulo">Cuaderno universitario</h3>
+          <p class="producto-precio">Desde <strong>$8.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 7 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://m.media-amazon.com/images/I/81p5r3p1QUL.jpg" alt="Set de resaltadores" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Libros y papelería</p>
+          <h3 class="producto-titulo">Set de resaltadores pastel</h3>
+          <p class="producto-precio">Desde <strong>$12.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 8 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://m.media-amazon.com/images/I/81WcnNQ-TBL.jpg" alt="Harry Potter y la piedra filosofal" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Libros y papelería</p>
+          <h3 class="producto-titulo">Harry Potter y la piedra filosofal</h3>
+          <p class="producto-precio">Desde <strong>$40.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 9 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://m.media-amazon.com/images/I/81iqZ2HHD-L.jpg" alt="El Hobbit" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Libros y papelería</p>
+          <h3 class="producto-titulo">El Hobbit</h3>
+          <p class="producto-precio">Desde <strong>$36.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 10 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://m.media-amazon.com/images/I/81vpsIs58WL.jpg" alt="Don Quijote de la Mancha" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Libros y papelería</p>
+          <h3 class="producto-titulo">Don Quijote de la Mancha</h3>
+          <p class="producto-precio">Desde <strong>$50.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 11 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://m.media-amazon.com/images/I/81bGKUa1e0L.jpg" alt="Set de marcadores" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Libros y papelería</p>
+          <h3 class="producto-titulo">Set de marcadores de colores</h3>
+          <p class="producto-precio">Desde <strong>$15.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 12 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://m.media-amazon.com/images/I/81QpkIctqPL.jpg" alt="La sombra del viento" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Libros y papelería</p>
+          <h3 class="producto-titulo">La sombra del viento</h3>
+          <p class="producto-precio">Desde <strong>$42.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 13 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://m.media-amazon.com/images/I/81gepf1eMqL.jpg" alt="Set de lápices" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Libros y papelería</p>
+          <h3 class="producto-titulo">Set de lápices Staedtler</h3>
+          <p class="producto-precio">Desde <strong>$10.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 14 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://m.media-amazon.com/images/I/81-349iYbfL.jpg" alt="Orgullo y prejuicio" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Libros y papelería</p>
+          <h3 class="producto-titulo">Orgullo y prejuicio</h3>
+          <p class="producto-precio">Desde <strong>$35.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 15 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://m.media-amazon.com/images/I/81AYb6hT6-L.jpg" alt="Cuaderno cuadriculado" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Libros y papelería</p>
+          <h3 class="producto-titulo">Cuaderno cuadriculado Norma</h3>
+          <p class="producto-precio">Desde <strong>$7.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+    </div>
+    <button class="btn-nav right" data-slider="libros-next">›</button>
+  </div>
+  <div class="product-indicators" id="indicators-libros"></div>
+</section>
+<!-- Productos - Más populares -->
+<section class="contenedor-destacado">
+  <div class="seccion-header">
+    <div class="contenedor-titulo">
+      <h2 class="titulo-seccion">Productos <span class="categoria">Más populares</span></h2>
+      <a href="categoria-populares.html" class="ver-mas">Ver más productos</a>
+    </div>
+  </div>
+  <div class="slider-wrapper">
+    <button class="btn-nav left" data-slider="populares-prev">‹</button>
+    <div class="slider-content-product" id="slider-populares">
+      <!-- Producto 1 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://images.samsung.com/is/image/samsung/p6pim/co/2302/gallery/co-galaxy-s23-s911-sm-s911bzadeco-thumb-534172010?$344_344_PNG$" alt="Samsung Galaxy S23" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Tecnología</p>
+          <h3 class="producto-titulo">Samsung Galaxy S23 128GB</h3>
+          <p class="producto-precio">Desde <strong>$3.200.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 2 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://falabella.scene7.com/is/image/FalabellaCO/8812311_1?wid=800&hei=800&qlt=70" alt="Cafetera Oster" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Electrodomésticos</p>
+          <h3 class="producto-titulo">Cafetera Oster</h3>
+          <p class="producto-precio">Desde <strong>$180.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 3 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://m.media-amazon.com/images/I/81eB+7+CkUL.jpg" alt="Cien años de soledad" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Libros y papelería</p>
+          <h3 class="producto-titulo">Cien años de soledad</h3>
+          <p class="producto-precio">Desde <strong>$45.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 4 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://alkosto.vteximg.com.br/arquivos/ids/213634-1000-1000/7704353364683.jpg" alt="Microondas Samsung" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Electrodomésticos</p>
+          <h3 class="producto-titulo">Microondas Samsung 23L</h3>
+          <p class="producto-precio">Desde <strong>$350.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 5 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://m.media-amazon.com/images/I/71UwSHSZRnS.jpg" alt="El Principito" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Libros y papelería</p>
+          <h3 class="producto-titulo">El Principito</h3>
+          <p class="producto-precio">Desde <strong>$30.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 6 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://homecenterco.scene7.com/is/image/SodimacCO/307829?wid=800&hei=800&qlt=70" alt="Sofá 3 puestos" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Hogar y muebles</p>
+          <h3 class="producto-titulo">Sofá 3 puestos tapizado</h3>
+          <p class="producto-precio">Desde <strong>$1.200.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 7 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://i.linio.com/p/2b8e2b8e2b8e2b8e2b8e2b8e2b8e2b8e-product.jpg" alt="Apple AirPods Pro 2" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Tecnología</p>
+          <h3 class="producto-titulo">Apple AirPods Pro 2da Gen</h3>
+          <p class="producto-precio">Desde <strong>$1.100.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 8 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://falabella.scene7.com/is/image/FalabellaCO/11500381_1?wid=800&hei=800&qlt=70" alt="Aspiradora Electrolux" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Electrodomésticos</p>
+          <h3 class="producto-titulo">Aspiradora Electrolux</h3>
+          <p class="producto-precio">Desde <strong>$320.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 9 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://m.media-amazon.com/images/I/81AFocW+J6L.jpg" alt="Cuaderno universitario" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Libros y papelería</p>
+          <h3 class="producto-titulo">Cuaderno universitario</h3>
+          <p class="producto-precio">Desde <strong>$8.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+      <!-- Producto 10 -->
+      <div class="card-producto">
+        <div class="producto-imagen">
+          <img src="https://i.linio.com/p/1b2e3b4e5b6e7b8e9b0e1b2e3b4e5b6e-product.jpg" alt="Smartwatch Amazfit Bip U" class="imagen-responsive">
+          <button class="btn-favorito" aria-label="Favorito"><i class="fas fa-heart"></i></button>
+        </div>
+        <div class="producto-info">
+          <p class="producto-categoria">Tecnología</p>
+          <h3 class="producto-titulo">Smartwatch Amazfit Bip U</h3>
+          <p class="producto-precio">Desde <strong>$220.000</strong></p>
+        </div>
+        <a href="producto.html" class="card-overlay-link"></a>
+      </div>
+    </div>
+    <button class="btn-nav right" data-slider="populares-next">›</button>
+  </div>
+  <div class="product-indicators" id="indicators-populares"></div>
+</section>
+
+<script>
+
+  
+// Control para todos los sliders
+document.addEventListener('DOMContentLoaded', function() {
+  // Configuración para cada slider
+  const sliders = [
+    { id: 'tech', cardsPerPage: 5 },
+    { id: 'elec', cardsPerPage: 5 },
+    { id: 'moda', cardsPerPage: 5 }, 
+    { id: 'juguetes', cardsPerPage: 5 },
+    { id: 'hogar', cardsPerPage: 5 },
+    { id: 'libros', cardsPerPage: 5},
+    { id: 'populares', cardsPerPage: 5 },
+
+  ];
+
+  sliders.forEach(sliderConfig => {
+    const slider = document.getElementById(`slider-${sliderConfig.id}`);
+    const prevBtn = document.querySelector(`[data-slider="${sliderConfig.id}-prev"]`);
+    const nextBtn = document.querySelector(`[data-slider="${sliderConfig.id}-next"]`);
+    const indicatorsContainer = document.getElementById(`indicators-${sliderConfig.id}`);
+    
+    const productCards = slider.querySelectorAll(".card-producto");
+    const productCardWidth = productCards[0].offsetWidth + 16; // ancho + gap
+    const totalProductCards = productCards.length;
+    const totalProductPages = Math.ceil(totalProductCards / sliderConfig.cardsPerPage);
+    let currentProductPage = 0;
+
+    function generateProductIndicators() {
+      indicatorsContainer.innerHTML = "";
+      for (let i = 0; i < totalProductPages; i++) {
+        const dot = document.createElement("span");
+        dot.classList.add("indicator");
+        if (i === 0) dot.classList.add("active");
+        dot.addEventListener("click", () => {
+          currentProductPage = i;
+          updateProductSlider();
+        });
+        indicatorsContainer.appendChild(dot);
+      }
+    }
+
+    function updateProductSlider() {
+      const translateX = -(currentProductPage * sliderConfig.cardsPerPage * productCardWidth);
+      slider.style.transform = `translateX(${translateX}px)`;
+      updateProductIndicators();
+      updateProductButtons();
+    }
+
+    function updateProductIndicators() {
+      const indicators = indicatorsContainer.querySelectorAll(".indicator");
+      indicators.forEach((dot, index) => {
+        dot.classList.toggle("active", index === currentProductPage);
+      });
+    }
+
+    function updateProductButtons() {
+      const showArrows = totalProductPages > 1;
+      prevBtn.style.display = showArrows ? "block" : "none";
+      nextBtn.style.display = showArrows ? "block" : "none";
+
+      prevBtn.disabled = currentProductPage === 0;
+      nextBtn.disabled = currentProductPage === totalProductPages - 1;
+    }
+
+    nextBtn.addEventListener("click", () => {
+      if (currentProductPage < totalProductPages - 1) {
+        currentProductPage++;
+        updateProductSlider();
+      }
+    });
+
+    prevBtn.addEventListener("click", () => {
+      if (currentProductPage > 0) {
+        currentProductPage--;
+        updateProductSlider();
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      updateProductSlider();
+    });
+
+    generateProductIndicators();
+    updateProductButtons();
+    updateProductSlider();
+  });
+});
+</script>
+
+
+
+<!--footer-->
+<footer class="footer-ofertia">
+  <div class="footer-container">
+    <div class="footer-column">
+      <h3>Ofertia</h3>
+      <ul>
+        <li><a href="quienes-somos.html">¿Quiénes somos?</a></li>
+        <li><a href="mision-vision.html">Misión y visión</a></li>
+        <li><a href="trabaja-con-nosotros.html">Trabaja con nosotros</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3>Ayuda</h3>
+      <ul>
+        <li><a href="centro-ayuda.html">Centro de ayuda</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="preguntas-frecuentes.html">Preguntas frecuentes</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3>Legal</h3>
+      <ul>
+        <li><a href="terminos-condiciones.html">Términos y condiciones</a></li>
+        <li><a href="politica-privacidad.html">Política de privacidad</a></li>
+        <li><a href="cookies.html">Cookies</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3>Ubicación</h3>
+      <p>Colombia, Bogotá D.C.<br>© 2024 Ofertia</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
+
