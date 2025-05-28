@@ -41,12 +41,12 @@ if(isset($_POST['actualizar'])) {
     if($mysqli->query($actualizar)) {
         echo "<script>\n";
         echo "    alert('Se actualizó :D')\n";
-        echo "    window.location='buscar_comentario.php'\n";
+        echo "    window.location='admin.php'\n";
         echo "</script>\n";
     } else {
         echo "<script>\n";
         echo "    alert('No se actualizó :C')\n";
-        echo "    window.location='buscar_comentario.php'\n";
+        echo "    window.location='admin.php'\n";
         echo "</script>\n";
     }
 }

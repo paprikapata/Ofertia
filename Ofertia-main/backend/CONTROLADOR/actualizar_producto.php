@@ -29,12 +29,12 @@
         if($resultado) {
             echo "<script>\n";
             echo "    alert('Producto actualizado exitosamente')\n";
-            echo "    window.location='Consultar_producto.php'\n";
+            echo "    window.location='admin.php'\n";
             echo "</script>\n";
         } else {
             echo "<script>\n";
             echo "    alert('Error al actualizar el producto')\n";
-            echo "    window.location='Consultar_producto.php'\n";
+            echo "    window.location='admin.php'\n";
             echo "</script>\n";
         }
     } else {

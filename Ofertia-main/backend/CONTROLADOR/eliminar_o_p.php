@@ -18,13 +18,13 @@
 if($mysqli ->query($eliminar)) {?>
 <script>
     alert("Se elimino:D")
-    window.location="Buscar_opciones_p.php"
+    window.location="admin.php"
 </script>
 <?php
 } else{?>
 <script>
     alert("No se elimino:C")
-    window.location="Buscar_opciones_p.php"
+    window.location="admin.php"
 </script>
 <?php
 }
