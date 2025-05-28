@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audífonos Bluetooth - Detalle del Producto</title>
+    <link rel="stylesheet" href="CSS/producto.css">
+</head>
+<body>
+    <!-- Barra de navegación y encabezado (asumimos que ya existe) -->
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title id="titulo-pagina">Producto - Detalle</title>
+        <link rel="stylesheet" href="CSS/producto.css">
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <label class="burger menu-toggle" for="burger">
+                    <input type="checkbox" id="burger" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+                <div class="menu-lateral" id="menuCategorias">
+                    <div class="menu-header">
+                        <span class="menu-titulo">Categorías</span>
+                        <button class="btn-cerrar" onclick="toggleMenu()">✕</button>
+                    </div>
+                    <ul class="lista-categorias">
+                        <li onclick="mostrarSubcategorias('Tecnología')">Tecnología <span>›</span></li>
+                        <li onclick="mostrarSubcategorias('Electrodomésticos')">Electrodomésticos <span>›</span></li>
+                        <li onclick="mostrarSubcategorias('Moda')">Moda <span>›</span></li>
+                        <li onclick="mostrarSubcategorias('Juguetes')">Juguetes <span>›</span></li>
+                        <li onclick="mostrarSubcategorias('Hogar')">Hogar y muebles <span>›</span></li>
+                        <li onclick="mostrarSubcategorias('Libros')">Libros y papelería <span>›</span></li>
+                    </ul>
+                    <div class="menu-subcategorias" id="subcategoriasBox">
+                        <button class="btn-volver" onclick="volverCategorias()">← Volver</button>
+                        <h4 id="tituloSubcategoria">Subcategorías</h4>
+                        <ul id="listaSubcategorias"></ul>
+                    </div>
+                </div>
+                <a href="index.html" class="logo-link">
+                    <div class="logo">
+                        <img src="IMG/ico/ofertia (1).png" alt="Logo Ofertia">
+                    </div>
+                </a>
+                <div class="search-bar">
+                    <input type="text" placeholder="Buscar productos...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="user-actions">
+                    <a href="favoritos.html">Favoritos</a>
+                    <a href="iniciar_sesion.html">Usuario</a>
+                </div>
+            </div>
+        </header>
+    
+        <script>
+            // Aquí puedes agregar el script para cargar los datos dinámicamente
+            // Por ejemplo, usando fetch para obtener los datos del producto según el ID de la URL
+            // y luego rellenar los campos con JS
+    
+            // Ejemplo de estructura de datos (puedes reemplazar esto por datos reales de scraping o backend)
+            const producto = {
+                nombre: "Audífonos Bluetooth Premium",
+                categoria: "Tecnología",
+                imagenPrincipal: "https://i.pinimg.com/736x/68/9c/9b/689c9b23e5254514197b9b209310e34d.jpg",
+                miniaturas: [
+                    "https://i.pinimg.com/736x/68/9c/9b/689c9b23e5254514197b9b209310e34d.jpg",
+                    "https://ejemplo.com/audifonos-lateral.jpg"
+                ],
+                precio: "$89.900",
+                descripcion: "Audífonos Bluetooth de alta calidad con cancelación de ruido.",
+                caracteristicas: [
+                    "Bluetooth 5.0",
+                    "Hasta 20 horas de batería",
+                    "Resistentes al agua"
+                ],
+                calificacion: 4.5,
+                opiniones: 2453,
+                ofertas: [
+                    {
+                        tienda: "Amazon",
+                        precio: "$89.900",
+                        url: "https://amazon.com/...",
+                        envio: "Gratis"
+                    }
+                ]
+            };
+    
+            // Ejemplo de renderizado dinámico (puedes adaptar esto a tu backend o scraping)
+            document.addEventListener("DOMContentLoaded", function() {
+                document.getElementById("titulo-pagina").textContent = producto.nombre + " - Detalle";
+                document.getElementById("titulo-producto").textContent = producto.nombre;
+                document.getElementById("breadcrumb-producto").textContent = producto.nombre;
+                document.getElementById("categoria-link").textContent = producto.categoria;
+                document.getElementById("imagen-principal").src = producto.imagenPrincipal;
+                document.getElementById("precio-producto").textContent = producto.precio;
+                document.getElementById("descripcion-producto").textContent = producto.descripcion;
+    
+                // Miniaturas
+                const miniaturasDiv = document.getElementById("miniaturas");
+                producto.miniaturas.forEach(url => {
+                    const btn = document.createElement("button");
+                    btn.className = "miniatura";
+                    btn.innerHTML = `<img src="${url}" alt="Miniatura">`;
+                    btn.onclick = () => {
+                        document.getElementById("imagen-principal").src = url;
+                    };
+                    miniaturasDiv.appendChild(btn);
+                });
+    
+                // Características
+                const caracDiv = document.getElementById("caracteristicas-producto");
+                const ul = document.createElement("ul");
+                producto.caracteristicas.forEach(carac => {
+                    const li = document.createElement("li");
+                    li.textContent = carac;
+                    ul.appendChild(li);
+                });
+                caracDiv.appendChild(ul);
+    
+                // Calificación
+                const calDiv = document.getElementById("calificacion-producto");
+                calDiv.innerHTML = "★".repeat(Math.floor(producto.calificacion)) + " (" + producto.opiniones + " opiniones)";
+    
+                // Ofertas
+                const ofertasDiv = document.getElementById("ofertas-tiendas");
+                producto.ofertas.forEach(oferta => {
+                    const ofertaEl = document.createElement("div");
+                    ofertaEl.className = "oferta-item";
+                    ofertaEl.innerHTML = `<strong>${oferta.tienda}</strong>: ${oferta.precio} - <a href="${oferta.url}" target="_blank">Ver oferta</a> (${oferta.envio})`;
+                    ofertasDiv.appendChild(ofertaEl);
+                });
+            });
+    
+            // Menú lateral y subcategorías (igual que en tu plantilla)
+            const subcategorias = {
+                "Tecnología": ["Audífonos", "Celulares", "Computadores", "Accesorios"],
+                "Electrodomésticos": ["Lavadoras", "Neveras", "Cafeteras"],
+                "Moda": ["Hombre", "Mujer", "Zapatos"],
+                "Juguetes": ["Educativos", "Muñecos"],
+                "Hogar": ["Sofás", "Camas", "Decoración"],
+                "Libros": ["Escolares", "Novelas", "Papelería"]
+            };
+    
+            function toggleMenu() {
+                const menu = document.getElementById('menuCategorias');
+                const isOpen = menu.style.display === 'flex';
+                menu.style.display = isOpen ? 'none' : 'flex';
+                document.getElementById('subcategoriasBox').style.display = 'none';
+                document.getElementById('burger').checked = !isOpen;
+            }
+    
+            function mostrarSubcategorias(categoria) {
+                const box = document.getElementById('subcategoriasBox');
+                const list = document.getElementById('listaSubcategorias');
+                const titulo = document.getElementById('tituloSubcategoria');
+                list.innerHTML = "";
+                titulo.textContent = categoria;
+                if (subcategorias[categoria]) {
+                    subcategorias[categoria].forEach(sub => {
+                        const item = document.createElement('li');
+                        item.textContent = sub;
+                        list.appendChild(item);
+                    });
+                }
+                box.style.display = 'block';
+            }
+    
+            function volverCategorias() {
+                document.getElementById('subcategoriasBox').style.display = 'none';
+            }
+        </script>
+
+       
+
+    
+
+    <main class="producto-detalle-container">
+        <!-- Dynamic breadcrumb navigation populated from scraped data -->
+        <nav class="breadcrumb">
+            <ul id="dynamic-breadcrumb">
+                <li><a href="/">Inicio</a></li>
+                <!-- Additional breadcrumb items will be populated via JavaScript -->
+            </ul>
+        </nav>
+
+        <script>
+            // Function to generate breadcrumb from scraped category data
+            function generateBreadcrumb(productData) {
+                const breadcrumb = document.getElementById('dynamic-breadcrumb');
+                
+                // Add category path
+                if (productData.categoryPath) {
+                    productData.categoryPath.forEach(category => {
+                        const li = document.createElement('li');
+                        const a = document.createElement('a');
+                        a.href = category.url;
+                        a.textContent = category.name;
+                        li.appendChild(a);
+                        breadcrumb.appendChild(li);
+                    });
+                }
+
+                // Add current product as final item
+                const currentItem = document.createElement('li');
+                currentItem.className = 'active';
+                currentItem.textContent = productData.name;
+                breadcrumb.appendChild(currentItem);
+            }
+        </script>
+
+        <!-- Main product section with dynamic data -->
+        <section class="producto-principal">
+            <div class="galeria-producto">
+                <div class="imagen-principal">
+                    <img src="" alt="" id="imagen-principal">
+                </div>
+                <div class="miniaturas" id="galeria-miniaturas">
+                    <!-- Thumbnail images will be dynamically populated -->
+                </div>
+
+                <script>
+                    // Function to populate product gallery from scraped data
+                    function populateProductGallery(productData) {
+                        // Set main image
+                        const mainImage = document.getElementById('imagen-principal');
+                        mainImage.src = productData.mainImage;
+                        mainImage.alt = productData.name;
+
+                        // Populate thumbnails
+                        const thumbnailsContainer = document.getElementById('galeria-miniaturas');
+                        thumbnailsContainer.innerHTML = ''; // Clear existing thumbnails
+
+                        productData.images.forEach((image, index) => {
+                            const button = document.createElement('button');
+                            button.className = `miniatura ${index === 0 ? 'active' : ''}`;
+                            button.setAttribute('data-img', image.full);
+
+                            const img = document.createElement('img');
+                            img.src = image.thumbnail;
+                            img.alt = image.description;
+
+                            button.appendChild(img);
+                            thumbnailsContainer.appendChild(button);
+
+                            // Add click handler to update main image
+                            button.addEventListener('click', () => {
+                                document.getElementById('imagen-principal').src = image.full;
+                                document.querySelectorAll('.miniatura').forEach(btn => 
+                                    btn.classList.remove('active'));
+                                button.classList.add('active');
+                            });
+                        });
+                    }
+                </script>
+<!-- Dynamic price comparison summary populated via web scraping -->
+<div class="resumen-comparacion" id="price-summary">
+    <div class="resumen-precio">
+        <div class="rango-precios">
+            <span class="precio-desde" id="lowest-price">Loading...</span>
+            <span class="separador-precios">-</span>
+            <span class="precio-hasta" id="highest-price">Loading...</span>
+        </div>
+        <p class="tiendas-disponibles" id="stores-count">Loading stores...</p>
+    </div>
+    <div class="resumen-botones">
+        <button class="btn-ver-ofertas" id="show-offers-btn">Ver todas las ofertas</button>
+        <button class="btn-alerta-precio" id="price-alert-btn">
+            <svg viewBox="0 0 24 24" width="16" height="16">
+                <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/>
+            </svg>
+            Crear alerta de precio
+        </button>
+    </div>
+</div>
+
+<script>
+// Function to update price summary with scraped data
+async function updatePriceSummary(productId) {
+    try {
+        const response = await fetch(`/api/products/${productId}/prices`);
+        const priceData = await response.json();
+        
+        document.getElementById('lowest-price').textContent = `$${priceData.lowestPrice}`;
+        document.getElementById('highest-price').textContent = `$${priceData.highestPrice}`;
+        document.getElementById('stores-count').textContent = 
+            `Disponible en ${priceData.storeCount} tiendas`;
+    } catch (error) {
+        console.error('Error fetching price data:', error);
+    }
+}
+
+// Event listeners for buttons
+document.getElementById('show-offers-btn').addEventListener('click', async () => {
+    const productId = new URLSearchParams(window.location.search).get('id');
+    window.location.href = `/ofertas?producto=${productId}`;
+});
+
+document.getElementById('price-alert-btn').addEventListener('click', async () => {
+    const productId = new URLSearchParams(window.location.search).get('id');
+    window.location.href = `/alertas/crear?producto=${productId}`;
+});
+
+// Initialize price summary on page load
+document.addEventListener('DOMContentLoaded', () => {
+    const productId = new URLSearchParams(window.location.search).get('id');
+    if (productId) {
+        updatePriceSummary(productId);
+    }
+});
+</script>
+</div>
+<div class="info-producto" id="product-info">
+    <div class="producto-encabezado">
+        <h1 class="producto-titulo" id="product-title">Loading...</h1>
+        <button class="btn-favorito" aria-label="Agregar a favoritos" id="favorite-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M12 21l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4
+                c1.54 0 3.04.99 3.57 2.36h.87C14.46 4.99 15.96 4 17.5 4
+                20 4 22 6 22 8.5c0 3.78-3.4 6.86-8.55 11.18L12 21z"/>
+            </svg>
+        </button>
+    </div>
+
+    <div class="calificacion">
+        <div class="estrellas" id="rating-stars">
+            <!-- Stars will be populated by JavaScript -->
+        </div>
+        <a href="#resenas" class="resenas-link" id="reviews-count">Loading reviews...</a>
+    </div>
+
+    <p class="producto-descripcion" id="product-description">
+        Loading product description...
+    </p>
+
+    <!-- Price History Section -->
+    <div class="historial-precios">
+        <h3>Price Evolution</h3>
+        <div class="grafico-precios" id="price-history-chart">
+            <!-- Chart will be rendered by JavaScript -->
+        </div>
+        <div class="indicadores-precio">
+            <div class="indicador">
+                <span class="etiqueta">Current Minimum Price:</span>
+                <span class="valor" id="current-min-price">Loading...</span>
+            </div>
+            <div class="indicador">
+                <span class="etiqueta">Average Price:</span>
+                <span class="valor" id="average-price">Loading...</span>
+            </div>
+            <div class="indicador">
+                <span class="etiqueta">Historical Maximum Price:</span>
+                <span class="valor" id="max-historical-price">Loading...</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Function to populate product information from scraped data
+async function populateProductInfo(productId) {
+    try {
+        const response = await fetch(`/api/products/${productId}`);
+        const productData = await response.json();
+
+        // Update basic product info
+        document.getElementById('product-title').textContent = productData.name;
+        document.getElementById('product-description').textContent = productData.description;
+
+        // Generate rating stars
+        const ratingStars = document.getElementById('rating-stars');
+        ratingStars.innerHTML = generateStarRating(productData.rating);
+        document.getElementById('reviews-count').textContent = 
+            `${productData.reviewCount} reviews`;
+
+        // Update price indicators
+        document.getElementById('current-min-price').textContent = 
+            formatPrice(productData.currentMinPrice);
+        document.getElementById('average-price').textContent = 
+            formatPrice(productData.averagePrice);
+        document.getElementById('max-historical-price').textContent = 
+            formatPrice(productData.maxHistoricalPrice);
+
+        // Render price history chart
+        renderPriceHistoryChart(productData.priceHistory);
+
+    } catch (error) {
+        console.error('Error fetching product data:', error);
+        // Handle error state
+    }
+}
+
+// Helper function to generate star rating HTML
+function generateStarRating(rating) {
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 >= 0.5;
+    let starsHTML = '';
+
+    for (let i = 0; i < 5; i++) {
+        if (i < fullStars) {
+            starsHTML += '<span class="estrella llena">★</span>';
+        } else if (i === fullStars && hasHalfStar) {
+            starsHTML += '<span class="estrella media">★</span>';
+        } else {
+            starsHTML += '<span class="estrella">★</span>';
+        }
+    }
+
+    return starsHTML;
+}
+
+// Helper function to format price
+function formatPrice(price) {
+    return new Intl.NumberFormat('es-CO', {
+        style: 'currency',
+        currency: 'COP'
+    }).format(price);
+}
+
+// Function to render price history chart
+function renderPriceHistoryChart(priceHistory) {
+    // Implement chart rendering logic here
+    // You can use libraries like Chart.js or D3.js
+}
+
+// Initialize product info on page load
+document.addEventListener('DOMContentLoaded', () => {
+    const productId = new URLSearchParams(window.location.search).get('id');
+    if (productId) {
+        populateProductInfo(productId);
+    }
+});
+</script>
+<!-- Additional product information populated dynamically -->
+<div class="info-adicional" id="additional-features">
+    <!-- Features will be populated via JavaScript -->
+</div>
+
+<script>
+// Function to create a feature element with icon and text
+function createFeatureElement(feature) {
+    const featureDiv = document.createElement('div');
+    featureDiv.className = 'caracteristica';
+    
+    // Create icon container
+    const iconDiv = document.createElement('div');
+    iconDiv.className = 'icono';
+    iconDiv.innerHTML = feature.icon; // SVG icon string
+    
+    // Create text container
+    const textDiv = document.createElement('div');
+    textDiv.className = 'texto';
+    
+    const title = document.createElement('h4');
+    title.textContent = feature.title;
+    
+    const description = document.createElement('p');
+    description.textContent = feature.description;
+    
+    textDiv.appendChild(title);
+    textDiv.appendChild(description);
+    
+    featureDiv.appendChild(iconDiv);
+    featureDiv.appendChild(textDiv);
+    
+    return featureDiv;
+}
+
+// Function to populate additional features from scraped data
+async function populateAdditionalFeatures(productId) {
+    try {
+        const response = await fetch(`/api/products/${productId}/features`);
+        const features = await response.json();
+        
+        const container = document.getElementById('additional-features');
+        container.innerHTML = ''; // Clear existing content
+        
+        features.forEach(feature => {
+            const featureElement = createFeatureElement(feature);
+            container.appendChild(featureElement);
+        });
+    } catch (error) {
+        console.error('Error fetching product features:', error);
+        // Handle error state
+    }
+}
+
+// Initialize features on page load
+document.addEventListener('DOMContentLoaded', () => {
+    const productId = new URLSearchParams(window.location.search).get('id');
+    if (productId) {
+        populateAdditionalFeatures(productId);
+    }
+});
+</script>
+<!-- Price alerts section with dynamic data -->
+<div class="alerta-precio-box" id="price-alert-container">
+    <h3>Create Price Alert</h3>
+    <p>We'll notify you when the price drops below your target:</p>
+    <div class="alerta-form">
+        <div class="precio-input">
+            <span class="simbolo">$</span>
+            <input type="number" 
+                   id="alert-price-input"
+                   min="0"
+                   step="1000">
+        </div>
+        <button class="btn-crear-alerta" id="create-alert-btn">Create Alert</button>
+    </div>
+</div>
+
+<script>
+// Function to initialize price alert form with product data
+async function initializePriceAlert(productId) {
+    try {
+        const response = await fetch(`/api/products/${productId}/price-data`);
+        const priceData = await response.json();
+        
+        const input = document.getElementById('alert-price-input');
+        input.value = Math.floor(priceData.currentPrice * 0.9); // Default 10% below current
+        input.min = Math.floor(priceData.historicalMin * 0.9);
+        input.max = priceData.currentPrice;
+        
+        // Add alert creation handler
+        document.getElementById('create-alert-btn').addEventListener('click', async () => {
+            try {
+                const alertPrice = input.value;
+                const response = await fetch('/api/price-alerts', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        productId,
+                        targetPrice: alertPrice
+                    })
+                });
+                
+                if (response.ok) {
+                    alert('Price alert created successfully!');
+                } else {
+                    throw new Error('Failed to create alert');
+                }
+            } catch (error) {
+                console.error('Error creating price alert:', error);
+                alert('Failed to create price alert. Please try again.');
+            }
+        });
+    } catch (error) {
+        console.error('Error initializing price alert:', error);
+        document.getElementById('price-alert-container').style.display = 'none';
+    }
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', () => {
+    const productId = new URLSearchParams(window.location.search).get('id');
+    if (productId) {
+        initializePriceAlert(productId);
+    }
+});
+</script>
+</div>
+</section>
+
+<!-- Price comparison section -->
+<section class="comparacion-precios">
+    <h2>Comparación de precios</h2>
+    
+    <div class="filtros-comparacion">
+        <div class="filtro">
+            <label for="ordenar">Ordenar por:</label>
+            <select id="ordenar" onchange="filterOffers()">
+                <option value="precio_asc">Precio: menor a mayor</option>
+                <option value="precio_desc">Precio: mayor a menor</option>
+                <option value="relevancia">Relevancia</option>
+                <option value="valoraciones">Valoraciones</option>
+            </select>
+        </div>
+        <div class="filtro">
+            <label for="envio">Envío:</label>
+            <select id="envio" onchange="filterOffers()">
+                <option value="todos">Todos</option>
+                <option value="gratis">Envío gratis</option>
+            </select>
+        </div>
+        <div class="filtro">
+            <label for="vendedor">Tipo de vendedor:</label>
+            <select id="vendedor" onchange="filterOffers()">
+                <option value="todos">Todos</option>
+                <option value="oficial">Tienda oficial</option>
+                <option value="marketplace">Marketplace</option>
+            </select>
+        </div>
+    </div>
+
+    <div id="lista-ofertas" class="lista-ofertas">
+        <!-- Offers will be dynamically populated here -->
+        <div id="loading-spinner" class="loading-spinner">Loading offers...</div>
+    </div>
+</section>
+
+<script>
+// Store data structure for offers
+let currentOffers = [];
+let currentPage = 1;
+const offersPerPage = 10;
+
+// Function to fetch offers from backend API
+async function fetchOffers(productId, page = 1) {
+    try {
+        const response = await fetch(`/api/products/${productId}/offers?page=${page}`);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching offers:', error);
+        return null;
+    }
+}
+
+// Function to create HTML for a single offer
+function createOfferHTML(offer) {
+    return `
+        <div class="oferta-item">
+            <div class="tienda-info">
+                <img src="${offer.storeLogo}" alt="${offer.storeName}" class="logo-tienda">
+                <div class="tienda-detalles">
+                    <h3 class="nombre-tienda">${offer.storeName}</h3>
+                    <div class="calificacion-tienda">
+                        ${generateStarRating(offer.storeRating)}
+                        <span class="num-opiniones">(${offer.reviewCount})</span>
+                    </div>
+                </div>
+            </div>
+            <div class="oferta-detalles">
+                <h3 class="oferta-nombre">${offer.productName}</h3>
+                <div class="oferta-envio">
+                    <svg viewBox="0 0 24 24" width="16" height="16">
+                        <path d="M19 7c0-1.1-.9-2-2-2h-3v2h3v2.65L13.52 14H10V9H6c-2.21 0-4 1.79-4 4v3h2c0 1.66 1.34 3 3 3s3-1.34 3-3h4.48L19 10.35V7zM7 17c-.55 0-1-.45-1-1h2c0 .55-.45 1-1 1z"/>
+                    </svg>
+                    <span>${offer.shippingInfo}</span>
+                </div>
+                <div class="oferta-disponibilidad">
+                    <svg viewBox="0 0 24 24" width="16" height="16">
+                        <path d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z"/>
+                    </svg>
+                    <span>${offer.availability}</span>
+                </div>
+            </div>
+            <div class="oferta-precio">
+                <div class="precio">${formatPrice(offer.price)}</div>
+                <p class="info-precio">${offer.priceInfo}</p>
+                <a href="${offer.offerUrl}" target="_blank" class="btn-ir-oferta">Ver oferta</a>
+            </div>
+        </div>
+    `;
+}
+
+// Function to generate star rating HTML
+function generateStarRating(rating) {
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 >= 0.5;
+    let stars = '';
+    
+    for (let i = 0; i < 5; i++) {
+        if (i < fullStars) {
+            stars += '<span class="estrella llena">★</span>';
+        } else if (i === fullStars && hasHalfStar) {
+            stars += '<span class="estrella media">★</span>';
+        } else {
+            stars += '<span class="estrella">★</span>';
+        }
+    }
+    
+    return stars;
+}
+
+// Function to format price
+function formatPrice(price) {
+    return new Intl.NumberFormat('es-CO', {
+        style: 'currency',
+        currency: 'COP'
+    }).format(price);
+}
+
+// Function to filter and sort offers
+function filterOffers() {
+    const sortBy = document.getElementById('ordenar').value;
+    const shipping = document.getElementById('envio').value;
+    const seller = document.getElementById('vendedor').value;
+    
+    let filteredOffers = [...currentOffers];
+    
+    // Apply filters
+    if (shipping === 'gratis') {
+        filteredOffers = filteredOffers.filter(offer => offer.freeShipping);
+    }
+    
+    if (seller !== 'todos') {
+        filteredOffers = filteredOffers.filter(offer => offer.sellerType === seller);
+    }
+    
+    // Apply sorting
+    filteredOffers.sort((a, b) => {
+        switch(sortBy) {
+            case 'precio_asc':
+                return a.price - b.price;
+            case 'precio_desc':
+                return b.price - a.price;
+            case 'relevancia':
+                return b.relevanceScore - a.relevanceScore;
+            case 'valoraciones':
+                return b.storeRating - a.storeRating;
+            default:
+                return 0;
+        }
+    });
+    
+    displayOffers(filteredOffers);
+}
+
+// Function to display offers
+function displayOffers(offers) {
+    const container = document.getElementById('lista-ofertas');
+    container.innerHTML = offers.map(offer => createOfferHTML(offer)).join('');
+    
+    if (offers.length === 0) {
+        container.innerHTML = '<p class="no-offers">No se encontraron ofertas con los filtros seleccionados</p>';
+    }
+}
+
+// Function to load more offers
+async function loadMoreOffers() {
+    currentPage++;
+    const productId = new URLSearchParams(window.location.search).get('id');
+    const newOffers = await fetchOffers(productId, currentPage);
+    
+    if (newOffers && newOffers.offers) {
+        currentOffers = [...currentOffers, ...newOffers.offers];
+        filterOffers();
+    }
+}
+
+// Initialize offers on page load
+document.addEventListener('DOMContentLoaded', async () => {
+    const productId = new URLSearchParams(window.location.search).get('id');
+    if (productId) {
+        const initialOffers = await fetchOffers(productId);
+        if (initialOffers && initialOffers.offers) {
+            currentOffers = initialOffers.offers;
+            filterOffers();
+        }
+    }
+});
+</script>
+<!-- Product information tabs dynamically populated from scraped data -->
+<section class="producto-tabs">
+    <div class="tabs-header">
+        <button class="tab-btn active" data-tab="especificaciones">Especificaciones</button>
+        <button class="tab-btn" data-tab="caracteristicas">Características</button>
+        <button class="tab-btn" data-tab="opiniones" id="tab-resenas">Opiniones</button>
+        <button class="tab-btn" data-tab="alternativas">Alternativas</button>
+        <button class="tab-btn" data-tab="preguntas">Preguntas frecuentes</button>
+    </div>
+
+    <div class="tabs-content">
+        <!-- Specifications tab -->
+        <div class="tab-panel active" id="especificaciones">
+            <table class="tabla-especificaciones" id="specs-table">
+                <!-- Specifications will be populated via JavaScript -->
+            </table>
+        </div>
+
+        <!-- Features tab -->
+        <div class="tab-panel" id="caracteristicas">
+            <ul class="lista-caracteristicas" id="features-list">
+                <!-- Features will be populated via JavaScript -->
+            </ul>
+        </div>
+
+        <!-- Reviews tab -->
+        <div class="tab-panel" id="opiniones">
+            <div class="resumen-resenas">
+                <div class="calificacion-promedio" id="rating-summary">
+                    <!-- Rating summary will be populated via JavaScript -->
+                </div>
+                <div class="distribucion-calificaciones" id="rating-distribution">
+                    <!-- Rating distribution will be populated via JavaScript -->
+                </div>
+            </div>
+
+            <div class="filtros-opiniones">
+                <div class="filtro-opinion">
+                    <label for="ordenar-opiniones">Ordenar por:</label>
+                    <select id="ordenar-opiniones">
+                        <option value="recientes">Más recientes</option>
+                        <option value="positivas">Más positivas</option>
+                        <option value="negativas">Más críticas</option>
+                    </select>
+                </div>
+                <div class="filtro-opinion">
+                    <label for="filtrar-estrellas">Filtrar por:</label>
+                    <select id="filtrar-estrellas">
+                        <option value="todas">Todas las estrellas</option>
+                        <option value="5">5 estrellas</option>
+                        <option value="4">4 estrellas</option>
+                        <option value="3">3 estrellas</option>
+                        <option value="2">2 estrellas</option>
+                        <option value="1">1 estrella</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="lista-resenas" id="reviews-list">
+                <!-- Reviews will be populated via JavaScript -->
+            </div>
+
+            <button class="btn-cargar-mas" id="load-more-reviews">Ver más opiniones</button>
+        </div>
+
+        <!-- Alternatives tab -->
+        <div class="tab-panel" id="alternativas">
+            <h3>Productos alternativos</h3>
+            <p>Estos productos ofrecen características similares y podrían interesarte:</p>
+            
+            <div class="alternativas-grid" id="alternatives-grid">
+                <!-- Alternative products will be populated via JavaScript -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+// Function to populate product specifications
+async function loadSpecifications(productId) {
+    try {
+        const response = await fetch(`/api/products/${productId}/specifications`);
+        const specs = await response.json();
+        
+        const table = document.getElementById('specs-table');
+        table.innerHTML = '';
+        
+        specs.forEach(spec => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <th>${spec.name}</th>
+                <td>${spec.value}</td>
+            `;
+            table.appendChild(row);
+        });
+    } catch (error) {
+        console.error('Error loading specifications:', error);
+    }
+}
+
+// Function to populate product features
+async function loadFeatures(productId) {
+    try {
+        const response = await fetch(`/api/products/${productId}/features`);
+        const features = await response.json();
+        
+        const list = document.getElementById('features-list');
+        list.innerHTML = '';
+        
+        features.forEach(feature => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <h3>${feature.name}</h3>
+                <p>${feature.description}</p>
+            `;
+            list.appendChild(li);
+        });
+    } catch (error) {
+        console.error('Error loading features:', error);
+    }
+}
+
+// Function to populate reviews summary
+async function loadReviewsSummary(productId) {
+    try {
+        const response = await fetch(`/api/products/${productId}/reviews/summary`);
+        const summary = await response.json();
+        
+        document.getElementById('rating-summary').innerHTML = `
+            <span class="promedio">${summary.averageRating}</span>
+            <div class="estrellas-promedio">
+                ${generateStars(summary.averageRating)}
+            </div>
+            <p>${summary.totalReviews} opiniones</p>
+        `;
+        
+        const distribution = document.getElementById('rating-distribution');
+        distribution.innerHTML = '';
+        
+        Object.entries(summary.distribution).forEach(([rating, percentage]) => {
+            const bar = document.createElement('div');
+            bar.className = 'calificacion-barra';
+            bar.innerHTML = `
+                <span class="nivel">${rating} ★</span>
+                <div class="barra-bg">
+                    <div class="barra-valor" style="width: ${percentage}%"></div>
+                </div>
+                <span class="porcentaje">${percentage}%</span>
+            `;
+            distribution.appendChild(bar);
+        });
+    } catch (error) {
+        console.error('Error loading reviews summary:', error);
+    }
+}
+
+// Function to load reviews
+async function loadReviews(productId, page = 1, filters = {}) {
+    try {
+        const queryParams = new URLSearchParams({
+            page,
+            ...filters
+        });
+        
+        const response = await fetch(`/api/products/${productId}/reviews?${queryParams}`);
+        const reviews = await response.json();
+        
+        const list = document.getElementById('reviews-list');
+        if (page === 1) list.innerHTML = '';
+        
+        reviews.forEach(review => {
+            const reviewElement = document.createElement('div');
+            reviewElement.className = 'resena';
+            reviewElement.innerHTML = `
+                <div class="resena-encabezado">
+                    <div class="resena-usuario">
+                        <img src="${review.userAvatar}" alt="Avatar de ${review.userName}" class="avatar">
+                        <div>
+                            <h4>${review.userName}</h4>
+                            <p class="fecha-resena">${review.date}</p>
+                            <div class="tienda-compra">
+                                <span>Comprado en</span>
+                                <img src="${review.storeLogo}" alt="${review.storeName}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="estrellas-resena">
+                        ${generateStars(review.rating)}
+                    </div>
+                </div>
+                <h3 class="titulo-resena">${review.title}</h3>
+                <p class="texto-resena">${review.content}</p>
+                ${review.photos ? `
+                    <div class="fotos-resena">
+                        ${review.photos.map(photo => `
+                            <img src="${photo.url}" alt="${photo.description}">
+                        `).join('')}
+                    </div>
+                ` : ''}
+                <div class="utilidad-resena">
+                    <p>¿Te resultó útil esta opinión?</p>
+                    <button class="btn-util" onclick="rateReview('${review.id}', true)">
+                        Sí (${review.helpfulVotes})
+                    </button>
+                    <button class="btn-util" onclick="rateReview('${review.id}', false)">
+                        No (${review.unhelpfulVotes})
+                    </button>
+                </div>
+            `;
+            list.appendChild(reviewElement);
+        });
+    } catch (error) {
+        console.error('Error loading reviews:', error);
+    }
+}
+
+// Function to load alternative products
+async function loadAlternatives(productId) {
+    try {
+        const response = await fetch(`/api/products/${productId}/alternatives`);
+        const alternatives = await response.json();
+        
+        const grid = document.getElementById('alternatives-grid');
+        grid.innerHTML = '';
+        
+        alternatives.forEach(alt => {
+            const altElement = document.createElement('div');
+            altElement.className = 'producto-alternativa';
+            altElement.innerHTML = `
+                <div class="alternativa-imagen">
+                    <img src="${alt.image}" alt="${alt.name}">
+                </div>
+                <div class="alternativa-info">
+                    <h4>${alt.name}</h4>
+                    <div class="alternativa-calificacion">
+                        <div class="estrellas">
+                            ${generateStars(alt.rating)}
+                        </div>
+                        <span class="num-opiniones">(${alt.reviewCount})</span>
+                    </div>
+                    <div class="alternativa-precio">
+                        <span class="desde">Desde</span>
+                        <span class="precio">${formatPrice(alt.price)}</span>
+                    </div>
+                    <div class="alternativa-tiendas">
+                        <span>Disponible en ${alt.storeCount} tiendas</span>
+                    </div>
+                    <a href="/comparar/${alt.slug}" class="btn-ver-producto">Ver producto</a>
+                </div>
+            `;
+            grid.appendChild(altElement);
+        });
+    } catch (error) {
+        console.error('Error loading alternatives:', error);
+    }
+}
+
+// Helper function to generate star rating HTML
+function generateStars(rating) {
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 >= 0.5;
+    let stars = '';
+    
+    for (let i = 0; i < 5; i++) {
+        if (i < fullStars) {
+            stars += '<span class="estrella llena">★</span>';
+        } else if (i === fullStars && hasHalfStar) {
+            stars += '<span class="estrella media">★</span>';
+        } else {
+            stars += '<span class="estrella">★</span>';
+        }
+    }
+    
+    return stars;
+}
+
+// Helper function to format price
+function formatPrice(price) {
+    return new Intl.NumberFormat('es-CO', {
+        style: 'currency',
+        currency: 'COP'
+    }).format(price);
+}
+
+// Initialize product tabs data on page load
+document.addEventListener('DOMContentLoaded', () => {
+    const productId = new URLSearchParams(window.location.search).get('id');
+    if (productId) {
+        loadSpecifications(productId);
+        loadFeatures(productId);
+        loadReviewsSummary(productId);
+        loadReviews(productId);
+        loadAlternatives(productId);
+    }
+    
+    // Set up event listeners for review filters
+    document.getElementById('ordenar-opiniones').addEventListener('change', (e) => {
+        loadReviews(productId, 1, { sort: e.target.value });
+    });
+    
+    document.getElementById('filtrar-estrellas').addEventListener('change', (e) => {
+        loadReviews(productId, 1, { rating: e.target.value });
+    });
+    
+    // Set up load more reviews button
+    document.getElementById('load-more-reviews').addEventListener('click', () => {
+        const currentPage = Math.ceil(document.querySelectorAll('.resena').length / 10);
+        loadReviews(productId, currentPage + 1);
+    });
+});
+</script>
+<!-- Comparison table populated via web scraping -->
+<div class="tabla-comparativa">
+    <h3>Product Specifications Comparison</h3>
+    <div class="tabla-scroll">
+        <table id="comparison-table">
+            <thead>
+                <tr id="comparison-headers">
+                    <!-- Headers will be populated dynamically -->
+                </tr>
+            </thead>
+            <tbody id="comparison-data">
+                <!-- Product data will be populated dynamically -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- FAQ section populated from product data -->
+<div id="faq-container">
+    <!-- FAQ items will be populated dynamically -->
+</div>
+
+<!-- Related products section -->
+<div id="related-products" class="productos-relacionados">
+    <!-- Related products will be populated dynamically -->
+</div>
+
+<script>
+// Function to fetch and populate comparison data
+async function loadComparisonData(productId) {
+    try {
+        const response = await fetch(`/api/products/${productId}/comparison`);
+        const data = await response.json();
+        
+        // Populate table headers
+        const headers = document.getElementById('comparison-headers');
+        headers.innerHTML = Object.keys(data.specifications[0])
+            .map(key => `<th>${key}</th>`)
+            .join('');
+        
+        // Populate table data
+        const tbody = document.getElementById('comparison-data');
+        tbody.innerHTML = data.specifications
+            .map(spec => `
+                <tr>
+                    ${Object.values(spec).map(value => `<td>${value}</td>`).join('')}
+                </tr>
+            `).join('');
+    } catch (error) {
+        console.error('Error loading comparison data:', error);
+        document.querySelector('.tabla-comparativa').style.display = 'none';
+    }
+}
+
+// Function to load and display FAQ
+async function loadProductFAQ(productId) {
+    try {
+        const response = await fetch(`/api/products/${productId}/faq`);
+        const faqs = await response.json();
+        
+        const container = document.getElementById('faq-container');
+        container.innerHTML = faqs.map((faq, index) => `
+            <div class="pregunta">
+                <div class="pregunta-header" id="pregunta${index}-header">
+                    <h3>${faq.question}</h3>
+                    <button class="btn-expandir" aria-expanded="false" 
+                            aria-controls="pregunta${index}-respuesta">
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                            <path d="M7 10l5 5 5-5z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="pregunta-respuesta" id="pregunta${index}-respuesta" hidden>
+                    <p>${faq.answer}</p>
+                </div>
+            </div>
+        `).join('');
+
+        // Add FAQ interaction handlers
+        setupFAQHandlers();
+    } catch (error) {
+        console.error('Error loading FAQ:', error);
+        document.getElementById('faq-container').style.display = 'none';
+    }
+}
+
+// Function to load related products
+async function loadRelatedProducts(productId) {
+    try {
+        const response = await fetch(`/api/products/${productId}/related`);
+        const products = await response.json();
+        
+        const container = document.getElementById('related-products');
+        container.innerHTML = products.map(product => `
+            <a href="/comparar/${product.slug}" class="card-link">
+                <div class="card-producto">
+                    <div class="producto-imagen">
+                        <img src="${product.image}" alt="${product.name}" class="imagen-responsive">
+                        <button class="btn-favorito" aria-label="Favorite" 
+                                onclick="event.preventDefault(); toggleFavorite('${product.id}');">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M12 21l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4
+                                c1.54 0 3.04.99 3.57 2.36h.87C14.46 4.99 15.96 4 17.5 4
+                                20 4 22 6 22 8.5c0 3.78-3.4 6.86-8.55 11.18L12 21z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="producto-info">
+                        <p class="producto-categoria">${product.category}</p>
+                        <h3 class="producto-titulo">${product.name}</h3>
+                        <p class="producto-precio">From <strong>$${product.price}</strong></p>
+                    </div>
+                </div>
+            </a>
+        `).join('');
+    } catch (error) {
+        console.error('Error loading related products:', error);
+        document.getElementById('related-products').style.display = 'none';
+    }
+}
+
+// Helper function to setup FAQ interaction
+function setupFAQHandlers() {
+    document.querySelectorAll('.pregunta-header').forEach(header => {
+        header.addEventListener('click', function() {
+            const respuesta = document.getElementById(this.getAttribute('aria-controls'));
+            const boton = this.querySelector('.btn-expandir');
+            const estaExpandido = boton.getAttribute('aria-expanded') === 'true';
+            
+            boton.setAttribute('aria-expanded', !estaExpandido);
+            respuesta.hidden = estaExpandido;
+            boton.style.transform = estaExpandido ? 'rotate(0deg)' : 'rotate(180deg)';
+        });
+    });
+}
+
+// Initialize all dynamic content
+document.addEventListener('DOMContentLoaded', function() {
+    const productId = new URLSearchParams(window.location.search).get('id');
+    if (productId) {
+        loadComparisonData(productId);
+        loadProductFAQ(productId);
+        loadRelatedProducts(productId);
+    }
+});
+</script>
+
+</main>
+
+
+<!-- Footer dinámico reutilizable para todas las páginas de producto -->
+<footer class="footer-dynamic">
+    <div class="footer-wrapper">
+        <div class="footer-section">
+            <h3 class="footer-heading">Ofertia</h3>
+            <ul class="footer-links">
+                <li class="footer-link-item"><a class="footer-link" href="quienes-somos.html">¿Quiénes somos?</a></li>
+                <li class="footer-link-item"><a class="footer-link" href="mision-vision.html">Misión y visión</a></li>
+                <li class="footer-link-item"><a class="footer-link" href="trabaja-con-nosotros.html">Trabaja con nosotros</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3 class="footer-heading">Ayuda</h3>
+            <ul class="footer-links">
+                <li class="footer-link-item"><a class="footer-link" href="centro-ayuda.html">Centro de ayuda</a></li>
+                <li class="footer-link-item"><a class="footer-link" href="contacto.html">Contacto</a></li>
+                <li class="footer-link-item"><a class="footer-link" href="preguntas-frecuentes.html">Preguntas frecuentes</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3 class="footer-heading">Legal</h3>
+            <ul class="footer-links">
+                <li class="footer-link-item"><a class="footer-link" href="terminos-condiciones.html">Términos y condiciones</a></li>
+                <li class="footer-link-item"><a class="footer-link" href="politica-privacidad.html">Política de privacidad</a></li>
+                <li class="footer-link-item"><a class="footer-link" href="cookies.html">Cookies</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3 class="footer-heading">Ubicación</h3>
+            <p class="footer-text">Colombia, Bogotá D.C.<br>© 2024 Ofertia</p>
+        </div>
+    </div>
+    <div class="footer-dynamic-content"></div>
+</footer>
+
+<!-- Aquí puedes agregar scripts globales para scraping o funcionalidades comunes -->
+<script>
+    // Ejemplo: función base para scraping o manipulación global de productos
+    function scrapingGlobalProducto() {
+        // Aquí puedes agregar tu lógica de scraping o manipulación de datos
+        // Por ejemplo, recorrer elementos de producto y extraer información
+        // document.querySelectorAll('.clase-producto').forEach(...)
+    }
+    // Puedes llamar a scrapingGlobalProducto() cuando cargue la página
+    // window.onload = scrapingGlobalProducto;
+</script>
+
+</body>
+</html>

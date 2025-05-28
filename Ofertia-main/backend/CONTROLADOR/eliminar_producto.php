@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Eliminar</title>
+</head>
+<body>
+ 
+
+<?php
+            include '../MODELO/base_de_datos.php'; /*include es para incluir una conexcion ya creada*/ 
+            $id_producto=$_GET['id_producto'];
+  $eliminar="delete from productos where id_producto='$id_producto' ";
+ 
+ 
+ 
+ 
+if($mysqli ->query($eliminar)) {?>
+<script>
+    alert("Se elimino:D")
+    window.location="Consultar_producto.php"
+</script>
+<?php
+} else{?>
+<script>
+    alert("No se elimino:C")
+    window.location="Consultar_producto.php"
+</script>
+<?php
+}
+
+
+
+?>
+
+
+</body>
+</html>

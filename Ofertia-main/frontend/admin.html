@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administrador - Ofertia</title>
+    <link rel="stylesheet" href="CSS/admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <nav class="admin-sidebar">
+            <div class="admin-logo">
+                <img src="IMG/logo.png" alt="Ofertia Logo">
+                <h2>Panel Admin</h2>
+            </div>
+            <ul class="admin-menu">
+                <li class="active" data-section="dashboard">Dashboard</li>
+                <li data-section="users">Usuarios</li>
+                <li data-section="comments">Comentarios</li>
+                <li data-section="products">Productos</li>
+                <li data-section="product-options">Opciones de Producto</li>
+                <li data-section="stores">Tiendas</li>
+                <li data-section="categories">Categorías</li>
+                <li data-section="reports">Reportes</li>
+                <li data-section="activity">Log de Actividad</li>
+            </ul>
+        </nav>
+
+        <main class="admin-main">
+            <header class="admin-header">
+                <div class="admin-search">
+                    <input type="text" placeholder="Buscar...">
+                </div>
+                <div class="admin-profile">
+                    <span class="admin-role">Super Admin</span>
+                    <img src="IMG/circulo-de-usuario.png" alt="Admin Profile">
+                </div>
+            </header>
+
+            <div class="admin-content">
+                <!-- Dashboard Section -->
+                <section id="dashboard" class="active">
+                    <h2>Dashboard</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3>Total Usuarios</h3>
+                            <p class="stat-number">0</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Productos Activos</h3>
+                            <p class="stat-number">0</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Comentarios Nuevos</h3>
+                            <p class="stat-number">0</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Tiendas Activas</h3>
+                            <p class="stat-number">0</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Users Section -->
+                <section id="users">
+                    <h2>Gestión de Usuarios</h2>
+                    <div class="table-container">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Usuario</th>
+                                    <th>Email</th>
+                                    <th>Rol</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="users-table-body"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Other sections with similar structure -->
+                <section id="comments">
+                    <h2>Gestión de Comentarios</h2>
+                    <div class="table-container">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Usuario</th>
+                                    <th>Producto</th>
+                                    <th>Comentario</th>
+                                    <th>Fecha</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="comments-table-body"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Add similar sections for products, product-options, stores, etc. -->
+            </div>
+        </main>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>
